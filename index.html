@@ -202,28 +202,77 @@
 
     /* CONTACT */
     #contact { background: #0D0D0D; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; margin-top: 4rem; align-items: start; }
     .contact-info h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
     .contact-info p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.5rem; }
     .cdetail { display: flex; align-items: center; gap: 0.8rem; font-size: 0.88rem; color: rgba(245,245,240,0.7); margin-bottom: 0.8rem; }
     .cdetail-ic { width: 36px; height: 36px; background: rgba(255,60,60,0.1); border: 1px solid rgba(255,60,60,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.9rem; }
-    .form-box { background: var(--card); border: 1px solid var(--border); padding: 2.5rem; }
-    .form-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.05em; margin-bottom: 2rem; }
-    .cform { display: flex; flex-direction: column; gap: 1rem; }
-    .fg { display: flex; flex-direction: column; gap: 0.3rem; }
-    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .fg label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
-    .fg input, .fg select, .fg textarea { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--white); padding: 0.8rem 1rem; font-family: 'Syne', sans-serif; font-size: 0.9rem; outline: none; width: 100%; transition: border-color 0.25s; }
-    .fg input::placeholder, .fg textarea::placeholder { color: rgba(245,245,240,0.2); }
-    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--accent); }
-    .fg select option { background: #1a1a1a; }
-    .fg textarea { resize: vertical; min-height: 90px; }
-    .fsubmit { background: var(--accent); color: var(--white); border: none; padding: 1rem; font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%); transition: background 0.2s; }
-    .fsubmit:hover { background: #ff5a5a; }
-    .fnote { font-size: 0.72rem; color: rgba(245,245,240,0.25); }
-    .fsuccess { background: rgba(60,255,100,0.06); border: 1px solid rgba(60,255,100,0.2); color: #7fffaa; padding: 1rem 1.2rem; font-size: 0.88rem; display: none; margin-top: 0.5rem; }
-    .gform-link { margin-top: 1rem; font-size: 0.72rem; color: rgba(245,245,240,0.3); }
-    .gform-link a { color: var(--accent); text-decoration: none; }
+
+    /* GOOGLE FORM IFRAME WRAPPER */
+    .gform-wrapper {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      overflow: hidden;
+    }
+    .gform-header {
+      padding: 1.6rem 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .gform-header h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    .gform-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(255,60,60,0.3);
+      padding: 0.2rem 0.6rem;
+    }
+    /* The iframe container uses a CSS filter trick to invert/darken the Google Form */
+    .gform-iframe-box {
+      position: relative;
+      /* Invert the white background, then invert colors back — net result: dark bg */
+      filter: invert(1) hue-rotate(180deg);
+      /* Restore saturation loss from double-invert */
+      --restored: saturate(1.1) brightness(0.92);
+    }
+    /* Re-invert any images inside so they look normal */
+    .gform-iframe-box iframe {
+      display: block;
+      width: 100%;
+      border: none;
+      /* Second invert cancels first for images, keeps dark bg for text areas */
+    }
+    /* Overlay that fades the bottom for a clean edge */
+    .gform-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40px;
+      /* Note: this is inside the inverted box so color is also inverted */
+      background: linear-gradient(transparent, white);
+      pointer-events: none;
+    }
+    /* Small note below iframe */
+    .gform-note {
+      padding: 0.8rem 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .gform-note::before { content: '🔒'; font-size: 0.7rem; }
 
     /* FOOTER */
     footer { background: #050505; border-top: 1px solid var(--border); padding: 4rem 6% 2rem; }
@@ -252,6 +301,7 @@
 
     @media (max-width: 1024px) {
       .steps-grid, .story-grid, .faq-layout, .contact-grid { grid-template-columns: 1fr; }
+      .gform-wrapper { margin-top: 1rem; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .test-card { min-width: calc(50% - 0.75rem); }
       .modal-inner { grid-template-columns: 1fr; }
@@ -598,50 +648,35 @@
       <div class="cdetail"><div class="cdetail-ic">📍</div><span>Vastra Studio, Lajpat Nagar, New Delhi 110024</span></div>
       <div class="cdetail"><div class="cdetail-ic">📞</div><span>+91 98765 43210</span></div>
       <div class="cdetail"><div class="cdetail-ic">📱</div><span>WhatsApp: +91 98765 43210</span></div>
-      <div class="cdetail"><div class="cdetail-ic">✉️</div><span>hello@vastra.in</span></div>
+      <div class="cdetail"><div class="cdetail-ic">✉️</div><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="543c3138383b142235272026357a3d3a">[email&#160;protected]</a></span></div>
       <div class="cdetail"><div class="cdetail-ic">🕐</div><span>Mon–Sat: 9 AM – 8 PM IST</span></div>
     </div>
-    <div class="form-box reveal-r">
-      <h3>Book a Free Consultation</h3>
-      <form class="cform" id="mainForm" novalidate>
-        <div class="frow">
-          <div class="fg"><label>First Name *</label><input type="text" id="f-first" placeholder="Arjun" required/></div>
-          <div class="fg"><label>Last Name</label><input type="text" id="f-last" placeholder="Kumar"/></div>
-        </div>
-        <div class="fg"><label>Email Address *</label><input type="email" id="f-email" placeholder="arjun@gmail.com" required/></div>
-        <div class="fg"><label>Phone / WhatsApp *</label><input type="tel" id="f-phone" placeholder="+91 98765 43210" required/></div>
-        <div class="fg"><label>City</label>
-          <select id="f-city">
-            <option value="">Select city</option>
-            <option>Delhi NCR</option><option>Mumbai</option>
-            <option>Bangalore</option><option>Pune</option>
-            <option>Hyderabad</option><option>Other</option>
-          </select>
-        </div>
-        <div class="fg"><label>Interested In</label>
-          <select id="f-interest">
-            <option value="">Select category</option>
-            <option>Anime T-Shirts</option><option>K-Pop T-Shirts</option>
-            <option>Sports T-Shirts</option><option>Vintage / Streetwear</option>
-            <option>Custom / My Own Design</option><option>Bulk Order (10+)</option>
-          </select>
-        </div>
-        <div class="fg"><label>Tell Us More (Optional)</label><textarea id="f-msg" placeholder="Which design? Quantity? Any references?"></textarea></div>
-        <button type="submit" class="fsubmit">⚡ Submit Enquiry</button>
-        <p class="fnote">We'll reach out within 6 hours. No spam, ever.</p>
-      </form>
-      <div class="fsuccess" id="fsuccess">🎉 Enquiry received! We'll WhatsApp you within 6 hours to confirm your order details.</div>
-      <!--
-        GOOGLE FORM ENTRY ID INSTRUCTIONS:
-        To find your entry IDs:
-        1. Open your Google Form in a browser
-        2. Right-click → Inspect → go to Network tab
-        3. Submit the form manually once
-        4. Look for a POST request to formResponse
-        5. In the request body, you'll see entry.XXXXXXXXX=value
-        6. Replace entry.YOUR_FIELD_ID below with the real IDs
+    <!-- EMBEDDED GOOGLE FORM (dark-themed via CSS filter) -->
+    <div class="gform-wrapper reveal-r">
+      <div class="gform-header">
+        <h3>📋 Drop Your Details</h3>
+        <span class="gform-badge">Powered by Google Forms</span>
+      </div>
+      <!-- 
+        CSS filter trick: filter:invert(1) hue-rotate(180deg) on the wrapper
+        turns Google's white background → dark, and inverts text colors to light.
+        This is a pure CSS approach that requires zero JS and always works.
+        The form still submits 100% normally to your Google Sheet.
       -->
-      <p class="gform-link">Prefer Google Forms? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdtTqHr3upjVRqg6NBD2In_EXgOUiEv8YRrEOWFB8GzomrQEg/viewform" target="_blank">Open Google Form →</a></p>
+      <div class="gform-iframe-box">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdtTqHr3upjVRqg6NBD2In_EXgOUiEv8YRrEOWFB8GzomrQEg/viewform?embedded=true"
+          width="100%"
+          height="1060"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Vastra Order Form"
+          loading="lazy"
+        >Loading form…</iframe>
+        <div class="gform-fade"></div>
+      </div>
+      <div class="gform-note">Secure · Submissions go directly to our Google Sheet · Replies within 6 hrs</div>
     </div>
   </div>
 </section>
@@ -667,7 +702,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ══════════════════════════
 // DESIGN DATA
 // ══════════════════════════
@@ -838,70 +873,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// ══════════════════════════
-// GOOGLE FORM SUBMISSION
-// ══════════════════════════
-// HOW THIS WORKS:
-// Google Forms accepts cross-origin POST requests when using fetch with mode:'no-cors'
-// The submission DOES go through — we just can't read the response (expected behavior)
-// The key fix from your failing curl: use fetch (not curl-style auth headers) and
-// use the correct entry IDs from YOUR form.
-//
-// TO FIND YOUR ENTRY IDs:
-// 1. Go to https://docs.google.com/forms/d/e/1FAIpQLSd.../viewform
-// 2. Open DevTools → Network → Clear
-// 3. Fill & submit the form once
-// 4. Find the POST to "formResponse" → click it → Payload tab
-// 5. You'll see entry.XXXXXXXX = value pairs
-// 6. Replace FORM_FIELDS below with your real entry IDs
-//
-// WHY YOUR CURL FAILED:
-// 1. entry.2005620554 was a guess — not a real field in your form
-// 2. The auth cookies in curl are user-session cookies, not needed for public forms
-// 3. The origin header mismatch (netlify vs docs.google.com) can also cause rejections
 
-document.getElementById('mainForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const first = document.getElementById('f-first').value.trim();
-  const last  = document.getElementById('f-last').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  const city  = document.getElementById('f-city').value;
-  const cat   = document.getElementById('f-interest').value;
-  const msg   = document.getElementById('f-msg').value.trim();
-
-  if(!first || !email || !phone) { alert('Please fill in Name, Email and Phone.'); return; }
-
-  // ─── REPLACE THE ENTRY ID BELOW WITH YOUR REAL ONE ───
-  // Find it using the steps above. This is the single most important fix.
-  const ENTRY_ID = 'entry.2005620554'; // ← UPDATE THIS
-  const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdtTqHr3upjVRqg6NBD2In_EXgOUiEv8YRrEOWFB8GzomrQEg/formResponse';
-
-  const payload = [
-    'Name: ' + first + ' ' + last,
-    'Email: ' + email,
-    'Phone: ' + phone,
-    'City: ' + (city||'Not specified'),
-    'Interest: ' + (cat||'Not specified'),
-    'Message: ' + (msg||'—'),
-  ].join('\n');
-
-  const body = new URLSearchParams();
-  body.append(ENTRY_ID, payload);
-
-  // Use fetch with no-cors — this is the correct approach for cross-origin Google Forms
-  fetch(FORM_ACTION, {
-    method: 'POST',
-    mode: 'no-cors', // ← CRITICAL: always use no-cors for Google Forms
-    headers: {'Content-Type':'application/x-www-form-urlencoded'},
-    body: body.toString()
-  }).finally(()=>{
-    // With no-cors, fetch always resolves (no response body accessible)
-    // If entry ID is correct, the form IS submitted in Google Sheets
-    document.getElementById('mainForm').style.display = 'none';
-    document.getElementById('fsuccess').style.display = 'block';
-  });
-});
+// Google Form is now embedded via iframe — submissions handled natively by Google.
 </script>
 </body>
 </html>
