@@ -3,1704 +3,905 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ThreadCraft — Premium Custom Printing & Tailoring</title>
-  <meta name="description" content="ThreadCraft offers bespoke custom printing and tailoring. Choose your fabric, schedule a measurement visit, and receive your perfect garment at home. Premium quality, delivered to your door." />
-  <meta name="keywords" content="custom printing, bespoke tailoring, fabric selection, custom clothing, personalized garments, tailor at home" />
-  <meta name="author" content="ThreadCraft" />
-  <meta property="og:title" content="ThreadCraft — Premium Custom Printing & Tailoring" />
-  <meta property="og:description" content="Bespoke garments crafted just for you. Select your fabric, get measured at home, and receive your masterpiece." />
+  <title>Vastra — Custom Printed T-Shirts | Anime, K-Pop, Sports & More</title>
+  <meta name="description" content="Vastra delivers premium custom printed t-shirts in India. Choose from Anime, K-Pop, Sports, and more — get measured at home and delivered to your door." />
+  <meta name="keywords" content="custom printed tshirts, anime tshirts india, kpop tshirts, sports tshirts, custom tshirts india, printed tees" />
+  <meta name="author" content="Vastra" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Vastra — Custom Printed T-Shirts" />
+  <meta property="og:description" content="Wear what you love. Anime, K-Pop, Sports and more — custom printed, perfectly fitted, delivered home." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1200" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --cream: #F8F3EC;
-      --ink: #1A1209;
-      --gold: #C8933A;
-      --gold-light: #E8B85A;
-      --rust: #8B3A1A;
-      --sage: #4A5C44;
-      --warm-gray: #9A8F83;
-      --card-bg: #FEFCF8;
-      --border: rgba(200,147,58,0.2);
+      --black: #0A0A0A;
+      --white: #F5F5F0;
+      --accent: #FF3C3C;
+      --accent2: #FFD600;
+      --muted: #6B6B6B;
+      --card: #141414;
+      --border: rgba(255,255,255,0.07);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      overflow-x: hidden;
-    }
+    body { font-family: 'Syne', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); }
 
-    /* ── NOISE TEXTURE OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.4;
-    }
+    /* TOP BAR */
+    .top-bar { background: var(--accent); color: var(--white); text-align: center; padding: 0.5rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; position: relative; z-index: 1002; }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 1.2rem 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background 0.4s, box-shadow 0.4s;
-    }
-    nav.scrolled {
-      background: rgba(248,243,236,0.96);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 2px 24px rgba(26,18,9,0.08);
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-      color: var(--ink);
-    }
-    .logo-icon {
-      width: 40px; height: 40px;
-      position: relative;
-    }
-    .logo-icon svg { width: 100%; height: 100%; }
-    .logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .logo-text span { color: var(--gold); }
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--ink);
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 1.5px;
-      background: var(--gold);
-      transition: width 0.3s;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-cta {
-      background: var(--ink);
-      color: var(--cream) !important;
-      padding: 0.6rem 1.4rem;
-      border-radius: 2px;
-    }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { background: var(--gold); color: var(--ink) !important; }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none; border: none;
-    }
-    .hamburger span {
-      width: 26px; height: 2px;
-      background: var(--ink);
-      transition: all 0.3s;
-    }
+    /* NAV */
+    nav { position: fixed; top: 34px; left: 0; right: 0; z-index: 1000; padding: 1rem 6%; display: flex; align-items: center; justify-content: space-between; transition: background 0.3s, top 0.3s; }
+    nav.scrolled { background: rgba(10,10,10,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); top: 0; }
+    .logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--white); }
+    .logo-icon { width: 36px; height: 36px; }
+    .logo-wm { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.06em; }
+    .logo-wm span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: rgba(245,245,240,0.65); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 0.55rem 1.4rem; clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%); }
+    .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); display: block; }
 
-    /* ── HERO SLIDER ── */
-    #home {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .slider {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.9s cubic-bezier(0.77,0,0.175,1);
-    }
-    .slide {
-      min-width: 100%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-    .slide img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transform: scale(1.08);
-      transition: transform 6s ease;
-    }
+    /* MOBILE MENU */
+    .mob-menu { position: fixed; inset: 0; background: var(--black); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.77,0,0.175,1); }
+    .mob-menu.open { transform: translateY(0); }
+    .mob-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 0.1em; color: var(--white); text-decoration: none; transition: color 0.2s; }
+    .mob-menu a:hover { color: var(--accent); }
+    .mob-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: var(--white); font-size: 2rem; cursor: pointer; }
+
+    /* HERO SLIDER */
+    #home { height: 100vh; min-height: 600px; position: relative; overflow: hidden; }
+    .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s ease; }
+    .slide.active { opacity: 1; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); transition: transform 7s ease; filter: brightness(0.42); }
     .slide.active img { transform: scale(1); }
-    .slide-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(26,18,9,0.7) 0%, rgba(26,18,9,0.2) 60%, transparent 100%);
-    }
-    .slide-content {
-      position: absolute;
-      bottom: 15%;
-      left: 8%;
-      max-width: 600px;
-      color: var(--cream);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s 0.4s, transform 0.8s 0.4s;
-    }
-    .slide.active .slide-content { opacity: 1; transform: translateY(0); }
-    .slide-tag {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    .slide-tag::before {
-      content: '';
-      display: block;
-      width: 40px; height: 1px;
-      background: var(--gold-light);
-    }
-    .slide h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
-    }
-    .slide p {
-      font-size: 1.1rem;
-      font-weight: 300;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--gold);
-      color: var(--ink);
-      padding: 0.9rem 2rem;
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--ink);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-      z-index: 0;
-    }
-    .btn-primary:hover::before { transform: scaleX(1); }
-    .btn-primary:hover { color: var(--cream); }
-    .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: transparent;
-      color: var(--cream);
-      padding: 0.9rem 2rem;
-      font-weight: 500;
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 1.5px solid rgba(248,243,236,0.5);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .slider-controls {
-      position: absolute;
-      bottom: 3rem;
-      right: 8%;
-      display: flex;
-      gap: 1rem;
-      z-index: 10;
-    }
-    .slider-btn {
-      width: 48px; height: 48px;
-      border: 1.5px solid rgba(248,243,236,0.5);
-      background: transparent;
-      color: var(--cream);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-      font-size: 1.2rem;
-    }
-    .slider-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
-    .slider-dots {
-      position: absolute;
-      bottom: 3.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 0.6rem;
-      z-index: 10;
-    }
-    .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: rgba(248,243,236,0.4);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .dot.active {
-      width: 24px;
-      border-radius: 3px;
-      background: var(--gold);
-    }
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 8%;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: rgba(248,243,236,0.6);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      z-index: 10;
-    }
-    .scroll-line {
-      width: 40px; height: 1px;
-      background: rgba(248,243,236,0.4);
-      position: relative;
-      overflow: hidden;
-    }
-    .scroll-line::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: var(--gold);
-      animation: scrollLine 2s ease infinite;
-    }
-    @keyframes scrollLine {
-      to { left: 100%; }
-    }
+    .hero-content { position: absolute; bottom: 14%; left: 6%; max-width: 680px; opacity: 0; transform: translateY(20px); transition: opacity 0.8s 0.3s, transform 0.8s 0.3s; }
+    .slide.active .hero-content { opacity: 1; transform: translateY(0); }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1rem; }
+    .hero-tag::before { content:''; display:block; width:30px; height:2px; background:var(--accent); }
+    .hero-h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem,8vw,7rem); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 1.2rem; }
+    .hero-h1 em { color: var(--accent); font-style: normal; }
+    .hero-p { font-size: 1.05rem; color: rgba(245,245,240,0.75); line-height: 1.7; margin-bottom: 2rem; font-weight: 400; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-red { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--white); padding: 0.9rem 2rem; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%); transition: background 0.2s, transform 0.2s; }
+    .btn-red:hover { background: #ff5a5a; transform: translateY(-2px); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); padding: 0.9rem 2rem; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border: 1.5px solid rgba(245,245,240,0.3); cursor: pointer; transition: border-color 0.2s; }
+    .btn-ghost:hover { border-color: var(--white); }
+    .slider-nav { position: absolute; bottom: 2.5rem; right: 6%; display: flex; gap: 0.6rem; z-index: 10; }
+    .snav-btn { width: 44px; height: 44px; border: 1px solid rgba(245,245,240,0.3); background: transparent; color: var(--white); cursor: pointer; font-size: 1rem; transition: all 0.2s; }
+    .snav-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .slide-dots { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; z-index: 10; }
+    .sdot { width: 6px; height: 6px; border-radius: 50%; background: rgba(245,245,240,0.3); cursor: pointer; transition: all 0.3s; }
+    .sdot.active { width: 28px; border-radius: 3px; background: var(--accent); }
+    .scroll-hint { position: absolute; bottom: 2rem; left: 6%; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(245,245,240,0.4); letter-spacing: 0.15em; text-transform: uppercase; display: flex; align-items: center; gap: 0.6rem; }
+    .scroll-bar { width: 40px; height: 1px; background: rgba(245,245,240,0.2); overflow: hidden; }
+    .scroll-bar-fill { height: 100%; background: var(--accent); animation: sf 2.5s ease infinite; }
+    @keyframes sf { 0%{width:0;margin-left:0} 50%{width:100%;margin-left:0} 100%{width:0;margin-left:100%} }
 
-    /* ── SECTION COMMONS ── */
-    section { padding: 7rem 8%; }
-    .section-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 32px; height: 1.5px;
-      background: var(--gold);
-    }
-    h2.section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      line-height: 1.15;
-      color: var(--ink);
-      margin-bottom: 1.5rem;
-    }
-    .section-subtitle {
-      font-size: 1.05rem;
-      color: var(--warm-gray);
-      line-height: 1.8;
-      max-width: 560px;
-    }
+    /* SECTIONS */
+    section { padding: 7rem 6%; }
+    .sec-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.7rem; }
+    .sec-label::before { content:''; width:24px; height:2px; background:var(--accent); display:block; }
+    h2.sec-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem,4vw,4rem); line-height: 0.95; letter-spacing: 0.03em; color: var(--white); margin-bottom: 1rem; }
+    h2.sec-title em { color: var(--accent); font-style: normal; }
+    .sec-sub { color: var(--muted); font-size: 0.95rem; line-height: 1.8; max-width: 520px; font-weight: 400; }
 
-    /* ── HOW IT WORKS / STEPS ── */
-    #how-it-works {
-      background: var(--ink);
-      color: var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-    #how-it-works::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(200,147,58,0.12), transparent 70%);
-      pointer-events: none;
-    }
-    #how-it-works .section-label { color: var(--gold-light); }
-    #how-it-works .section-label::before { background: var(--gold-light); }
-    #how-it-works h2 { color: var(--cream); }
-    #how-it-works .section-subtitle { color: rgba(248,243,236,0.6); }
-    .steps-header { margin-bottom: 5rem; }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      position: relative;
-    }
-    .steps-grid::before {
-      content: '';
-      position: absolute;
-      top: 60px; left: 16.67%;
-      width: 66.67%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      z-index: 0;
-    }
-    .step-card {
-      background: rgba(248,243,236,0.03);
-      border: 1px solid rgba(200,147,58,0.12);
-      padding: 3rem 2.5rem;
-      position: relative;
-      transition: background 0.3s;
-    }
-    .step-card:hover { background: rgba(200,147,58,0.06); }
-    .step-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      font-weight: 700;
-      color: rgba(200,147,58,0.15);
-      line-height: 1;
-      position: absolute;
-      top: 1.5rem; right: 2rem;
-    }
-    .step-icon {
-      width: 56px; height: 56px;
-      background: rgba(200,147,58,0.15);
-      border: 1px solid rgba(200,147,58,0.3);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 2rem;
-      font-size: 1.4rem;
-    }
-    .step-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      color: var(--cream);
-      margin-bottom: 1rem;
-    }
-    .step-card p {
-      color: rgba(248,243,236,0.6);
-      line-height: 1.8;
-      font-size: 0.95rem;
-    }
-    .step-badge {
-      display: inline-block;
-      margin-top: 1.5rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid rgba(200,147,58,0.3);
-      padding: 0.3rem 0.8rem;
-    }
-    .step-connector {
-      position: absolute;
-      top: 60px;
-      right: -20px;
-      color: var(--gold);
-      font-size: 1.2rem;
-      z-index: 2;
-    }
+    /* HOW IT WORKS */
+    #how-it-works { background: #0D0D0D; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); margin-top: 4rem; }
+    .step-card { background: var(--card); padding: 3rem 2.5rem; position: relative; overflow: hidden; transition: background 0.3s; }
+    .step-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transition:transform 0.4s; }
+    .step-card:hover::before { transform:scaleX(1); }
+    .step-card:hover { background: #1a1a1a; }
+    .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 6rem; color: rgba(255,60,60,0.08); position: absolute; top: 0.5rem; right: 1.5rem; line-height: 1; }
+    .step-icon-box { width: 52px; height: 52px; background: rgba(255,60,60,0.1); border: 1px solid rgba(255,60,60,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1.8rem; }
+    .step-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.05em; margin-bottom: 0.8rem; }
+    .step-card p { color: var(--muted); line-height: 1.8; font-size: 0.9rem; }
+    .step-pill { display: inline-block; margin-top: 1.5rem; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(255,60,60,0.3); padding: 0.25rem 0.7rem; }
 
-    /* ── FABRICS ── */
-    #fabrics { background: var(--cream); }
-    .fabrics-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-    }
-    .fabrics-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    .fabric-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      position: relative;
-    }
-    .fabric-card:first-child { grid-column: span 2; }
-    .fabric-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,18,9,0.12); }
-    .fabric-card img { width: 100%; height: 180px; object-fit: cover; transition: transform 0.5s; }
-    .fabric-card:first-child img { height: 240px; }
-    .fabric-card:hover img { transform: scale(1.05); }
-    .fabric-card-body { padding: 1.2rem; }
-    .fabric-card-body h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-    }
-    .fabric-card-body p { font-size: 0.82rem; color: var(--warm-gray); }
-    .fabric-tag {
-      position: absolute;
-      top: 1rem; left: 1rem;
-      background: var(--gold);
-      color: var(--ink);
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
-    }
-    .fabrics-text .section-subtitle { margin-bottom: 2rem; }
-    .fabric-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      margin-bottom: 2.5rem;
-    }
-    .fabric-features li {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 0.95rem;
-    }
-    .fabric-features li::before {
-      content: '✦';
-      color: var(--gold);
-      font-size: 0.7rem;
-    }
+    /* DESIGNS */
+    #designs { background: var(--black); }
+    .category-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 2rem 0; }
+    .cat-tab { background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 0.5rem 1.2rem; font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%); }
+    .cat-tab:hover, .cat-tab.active { background: var(--accent); border-color: var(--accent); color: var(--white); }
+    .designs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .design-card { background: var(--card); border: 2px solid var(--border); overflow: hidden; cursor: pointer; transition: transform 0.3s, border-color 0.3s; position: relative; }
+    .design-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .design-card-img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.5s; display: block; }
+    .design-card:hover .design-card-img { transform: scale(1.06); }
+    .d-check { position: absolute; top: 0.6rem; right: 0.6rem; width: 28px; height: 28px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; opacity: 0; transition: opacity 0.2s; }
+    .design-card:hover .d-check { opacity: 1; }
+    .design-card-label { padding: 0.8rem 1rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(245,245,240,0.7); }
+    .preview-hint { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; margin-top: 1.5rem; display: block; }
 
-    /* ── OUR STORY ── */
-    #our-story {
-      background: #F2EBE0;
-      position: relative;
-      overflow: hidden;
-    }
-    .story-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-    }
-    .story-image-stack { position: relative; height: 520px; }
-    .story-img-main {
-      position: absolute;
-      left: 0; top: 0;
-      width: 75%;
-      height: 420px;
-      object-fit: cover;
-    }
-    .story-img-accent {
-      position: absolute;
-      right: 0; bottom: 0;
-      width: 55%;
-      height: 280px;
-      object-fit: cover;
-      border: 6px solid var(--cream);
-    }
-    .story-badge {
-      position: absolute;
-      bottom: 60px; left: 20%;
-      background: var(--ink);
-      color: var(--cream);
-      padding: 1.5rem;
-      width: 140px; height: 140px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      z-index: 10;
-    }
-    .story-badge-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .story-badge-text { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
-    .story-text .section-subtitle { margin-bottom: 1.5rem; }
-    .story-text p { color: var(--warm-gray); line-height: 1.9; font-size: 0.95rem; margin-bottom: 1.2rem; }
-    .story-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 2.5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .stat-item { text-align: center; }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--gold);
-      display: block;
-    }
-    .stat-label { font-size: 0.78rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.1em; }
+    /* TSHIRT MODAL */
+    .tshirt-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.35s; padding: 1.5rem; }
+    .tshirt-modal.open { opacity: 1; pointer-events: all; }
+    .modal-inner { background: #111; border: 1px solid var(--border); max-width: 900px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; max-height: 90vh; overflow: auto; position: relative; transform: scale(0.92) translateY(30px); transition: transform 0.4s; }
+    .tshirt-modal.open .modal-inner { transform: scale(1) translateY(0); }
+    .modal-left { padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #0D0D0D; border-right: 1px solid var(--border); gap: 1rem; }
+    .color-btns { display: flex; gap: 0.5rem; }
+    .cdot { width: 26px; height: 26px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s; }
+    .cdot.active, .cdot:hover { border-color: var(--accent); }
+    .shirt-wrap { position: relative; width: 260px; max-width: 100%; }
+    .shirt-wrap svg { width: 100%; height: auto; display: block; }
+    .shirt-design-img { position: absolute; top: 30%; left: 50%; transform: translateX(-50%); width: 40%; pointer-events: none; border-radius: 4px; }
+    .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--muted); font-size: 1.5rem; cursor: pointer; z-index: 10; transition: color 0.2s; line-height: 1; }
+    .modal-close:hover { color: var(--white); }
+    .modal-right { padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1.4rem; overflow-y: auto; }
+    .modal-right h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.05em; line-height: 1; }
+    .size-grid { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.4rem; }
+    .size-btn { width: 44px; height: 44px; border: 1px solid var(--border); background: var(--card); color: var(--muted); font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .size-btn:hover, .size-btn.active { border-color: var(--accent); color: var(--white); background: rgba(255,60,60,0.1); }
+    .qty-row { display: flex; align-items: center; gap: 1rem; margin-top: 0.4rem; }
+    .qty-btn { width: 36px; height: 36px; border: 1px solid var(--border); background: var(--card); color: var(--white); font-size: 1.2rem; cursor: pointer; transition: all 0.2s; }
+    .qty-btn:hover { border-color: var(--accent); }
+    .qty-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; min-width: 32px; text-align: center; }
+    .modal-price { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--accent); line-height: 1; }
+    .modal-price-note { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+    .modal-actions { display: flex; flex-direction: column; gap: 0.7rem; }
+    .modal-specs { font-size: 0.75rem; color: var(--muted); line-height: 1.8; }
 
-    /* ── TESTIMONIALS ── */
-    #testimonials { background: var(--ink); overflow: hidden; }
-    #testimonials .section-label { color: var(--gold-light); }
-    #testimonials .section-label::before { background: var(--gold-light); }
-    #testimonials h2 { color: var(--cream); }
-    .testimonials-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 4rem;
-    }
-    .testimonial-controls { display: flex; gap: 0.8rem; }
-    .test-btn {
-      width: 44px; height: 44px;
-      border: 1px solid rgba(200,147,58,0.3);
-      background: transparent;
-      color: var(--cream);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-    }
-    .test-btn:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
-    .testimonials-track-wrapper { overflow: hidden; }
-    .testimonials-track {
-      display: flex;
-      gap: 2rem;
-      transition: transform 0.7s cubic-bezier(0.77,0,0.175,1);
-    }
-    .testimonial-card {
-      min-width: calc(33.33% - 1.4rem);
-      background: rgba(248,243,236,0.04);
-      border: 1px solid rgba(200,147,58,0.12);
-      padding: 2.5rem;
-      position: relative;
-    }
-    .quote-mark {
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      color: var(--gold);
-      opacity: 0.3;
-      line-height: 1;
-      position: absolute;
-      top: 1rem; left: 1.8rem;
-    }
-    .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1.5rem; letter-spacing: 0.1em; }
-    .testimonial-text {
-      color: rgba(248,243,236,0.8);
-      line-height: 1.8;
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      font-style: italic;
-    }
-    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
-    .author-avatar {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(200,147,58,0.3);
-    }
-    .author-name {
-      font-weight: 600;
-      color: var(--cream);
-      font-size: 0.95rem;
-    }
-    .author-role { font-size: 0.78rem; color: var(--warm-gray); }
+    /* OUR STORY */
+    #our-story { background: #0D0D0D; }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .story-imgs { position: relative; height: 480px; }
+    .s-img-a { position: absolute; left: 0; top: 0; width: 70%; height: 380px; object-fit: cover; }
+    .s-img-b { position: absolute; right: 0; bottom: 0; width: 55%; height: 260px; object-fit: cover; border: 4px solid var(--black); }
+    .s-badge { position: absolute; bottom: 80px; left: 22%; background: var(--accent); color: var(--white); padding: 1.2rem; width: 120px; height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 5; }
+    .s-badge-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; }
+    .s-badge-txt { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .story-text p { color: var(--muted); line-height: 1.9; font-size: 0.93rem; margin-bottom: 1rem; }
+    .story-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+    .stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--accent); display: block; }
+    .stat-l { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
 
-    /* ── PROCESS VISUAL ── */
-    #process { background: var(--cream); }
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      margin-top: 4rem;
-    }
-    .process-item { text-align: center; position: relative; }
-    .process-item:not(:last-child)::after {
-      content: '→';
-      position: absolute;
-      right: -1.2rem;
-      top: 2.5rem;
-      color: var(--gold);
-      font-size: 1.2rem;
-    }
-    .process-icon-wrap {
-      width: 80px; height: 80px;
-      background: var(--ink);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-      font-size: 1.8rem;
-      position: relative;
-      transition: transform 0.3s;
-    }
-    .process-item:hover .process-icon-wrap { transform: scale(1.08); }
-    .process-item h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      margin-bottom: 0.6rem;
-    }
-    .process-item p { font-size: 0.85rem; color: var(--warm-gray); line-height: 1.7; }
+    /* GALLERY */
+    #gallery { background: var(--black); }
+    .gal-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.8rem; margin-top: 3rem; }
+    .gitem { overflow: hidden; position: relative; cursor: pointer; }
+    .gitem:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .gitem:nth-child(5) { grid-column: span 2; }
+    .gitem img { width: 100%; height: 100%; min-height: 180px; object-fit: cover; transition: transform 0.6s; display: block; }
+    .gitem:hover img { transform: scale(1.06); }
+    .gitem-ov { position: absolute; inset: 0; background: rgba(255,60,60,0.5); opacity: 0; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.15em; }
+    .gitem:hover .gitem-ov { opacity: 1; }
 
-    /* ── FAQ ── */
-    #faq { background: #F2EBE0; }
-    .faq-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 6rem;
-    }
-    .faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 1rem; }
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-    }
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      text-align: left;
-      padding: 1.5rem 0;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--ink);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-    .faq-icon {
-      width: 24px; height: 24px;
-      border: 1.5px solid var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.3s, transform 0.3s;
-      color: var(--gold);
-      font-size: 1rem;
-    }
-    .faq-item.open .faq-icon { background: var(--gold); color: var(--ink); transform: rotate(45deg); }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s;
-      color: var(--warm-gray);
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-    .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 1.5rem; }
+    /* TESTIMONIALS */
+    #testimonials { background: #0D0D0D; overflow: hidden; }
+    .test-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+    .tarrows { display: flex; gap: 0.5rem; }
+    .tarrow { width: 44px; height: 44px; border: 1px solid var(--border); background: transparent; color: var(--white); cursor: pointer; font-size: 1rem; transition: all 0.2s; }
+    .tarrow:hover { border-color: var(--accent); color: var(--accent); }
+    .test-track-wrap { overflow: hidden; }
+    .test-track { display: flex; gap: 1.5rem; transition: transform 0.65s cubic-bezier(0.77,0,0.175,1); }
+    .test-card { min-width: calc(33.33% - 1rem); background: var(--card); border: 1px solid var(--border); padding: 2rem; position: relative; flex-shrink: 0; }
+    .test-qm { position: absolute; top: 0.8rem; right: 1.2rem; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: rgba(255,60,60,0.12); line-height: 1; }
+    .test-stars { color: var(--accent2); font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .test-txt { color: rgba(245,245,240,0.7); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.5rem; font-weight: 400; }
+    .test-author { display: flex; align-items: center; gap: 0.8rem; }
+    .test-av { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,60,60,0.3); }
+    .test-name { font-size: 0.9rem; font-weight: 700; }
+    .test-role { font-size: 0.75rem; color: var(--muted); }
 
-    /* ── CONTACT / FORM ── */
-    #contact { background: var(--ink); }
-    #contact .section-label { color: var(--gold-light); }
-    #contact .section-label::before { background: var(--gold-light); }
-    #contact h2 { color: var(--cream); }
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      margin-top: 4rem;
-    }
-    .contact-info { color: rgba(248,243,236,0.7); }
-    .contact-info h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--cream);
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .contact-info p { line-height: 1.9; margin-bottom: 2rem; font-size: 0.95rem; }
-    .contact-details { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 0.92rem;
-    }
-    .contact-detail-icon {
-      width: 40px; height: 40px;
-      background: rgba(200,147,58,0.12);
-      border: 1px solid rgba(200,147,58,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .form-wrapper {
-      background: rgba(248,243,236,0.04);
-      border: 1px solid rgba(200,147,58,0.12);
-      padding: 2.5rem;
-    }
-    .form-wrapper h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--cream);
-      font-size: 1.3rem;
-      margin-bottom: 2rem;
-    }
-    .custom-form { display: flex; flex-direction: column; gap: 1.2rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-    .form-group label {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(248,243,236,0.5);
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: rgba(248,243,236,0.05);
-      border: 1px solid rgba(200,147,58,0.15);
-      color: var(--cream);
-      padding: 0.85rem 1rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.3s;
-      width: 100%;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(248,243,236,0.25); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--gold); }
-    .form-group select option { background: var(--ink); }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-submit {
-      background: var(--gold);
-      color: var(--ink);
-      border: none;
-      padding: 1rem 2rem;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .form-submit:hover { background: var(--gold-light); }
-    .form-note { font-size: 0.78rem; color: rgba(248,243,236,0.35); margin-top: 0.5rem; }
+    /* FAQ */
+    #faq { background: var(--black); }
+    .faq-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 1.4rem 0; color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-ico { width: 22px; height: 22px; border: 1.5px solid var(--accent); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1rem; border-radius: 50%; transition: background 0.3s, transform 0.3s; }
+    .faq-item.open .faq-ico { background: var(--accent); color: var(--white); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; color: var(--muted); font-size: 0.88rem; line-height: 1.8; transition: max-height 0.4s ease, padding 0.3s; }
+    .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.2rem; }
 
-    /* ── GALLERY ── */
-    #gallery { background: var(--cream); }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: auto;
-      gap: 1rem;
-      margin-top: 3rem;
-    }
-    .gallery-item {
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-    }
-    .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
-    .gallery-item:nth-child(2) { grid-column: span 4; }
-    .gallery-item:nth-child(3) { grid-column: span 3; }
-    .gallery-item:nth-child(4) { grid-column: span 3; }
-    .gallery-item:nth-child(5) { grid-column: span 4; }
-    .gallery-item:nth-child(6) { grid-column: span 5; grid-row: span 1; }
-    .gallery-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      min-height: 200px;
-      transition: transform 0.6s ease;
-    }
-    .gallery-item:hover img { transform: scale(1.06); }
-    .gallery-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(26,18,9,0.5);
-      opacity: 0;
-      transition: opacity 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--cream);
-      font-size: 1.5rem;
-    }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    /* CONTACT */
+    #contact { background: #0D0D0D; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; }
+    .contact-info h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
+    .contact-info p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.5rem; }
+    .cdetail { display: flex; align-items: center; gap: 0.8rem; font-size: 0.88rem; color: rgba(245,245,240,0.7); margin-bottom: 0.8rem; }
+    .cdetail-ic { width: 36px; height: 36px; background: rgba(255,60,60,0.1); border: 1px solid rgba(255,60,60,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.9rem; }
+    .form-box { background: var(--card); border: 1px solid var(--border); padding: 2.5rem; }
+    .form-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.05em; margin-bottom: 2rem; }
+    .cform { display: flex; flex-direction: column; gap: 1rem; }
+    .fg { display: flex; flex-direction: column; gap: 0.3rem; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fg label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .fg input, .fg select, .fg textarea { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--white); padding: 0.8rem 1rem; font-family: 'Syne', sans-serif; font-size: 0.9rem; outline: none; width: 100%; transition: border-color 0.25s; }
+    .fg input::placeholder, .fg textarea::placeholder { color: rgba(245,245,240,0.2); }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--accent); }
+    .fg select option { background: #1a1a1a; }
+    .fg textarea { resize: vertical; min-height: 90px; }
+    .fsubmit { background: var(--accent); color: var(--white); border: none; padding: 1rem; font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%); transition: background 0.2s; }
+    .fsubmit:hover { background: #ff5a5a; }
+    .fnote { font-size: 0.72rem; color: rgba(245,245,240,0.25); }
+    .fsuccess { background: rgba(60,255,100,0.06); border: 1px solid rgba(60,255,100,0.2); color: #7fffaa; padding: 1rem 1.2rem; font-size: 0.88rem; display: none; margin-top: 0.5rem; }
+    .gform-link { margin-top: 1rem; font-size: 0.72rem; color: rgba(245,245,240,0.3); }
+    .gform-link a { color: var(--accent); text-decoration: none; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #0F0B06;
-      color: rgba(248,243,236,0.6);
-      padding: 5rem 8% 2rem;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 4rem;
-    }
-    .footer-brand .logo-text { font-size: 1.4rem; margin-bottom: 1rem; display: block; }
-    .footer-brand p { font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.5rem; }
-    .social-links { display: flex; gap: 0.8rem; }
-    .social-link {
-      width: 36px; height: 36px;
-      border: 1px solid rgba(200,147,58,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(248,243,236,0.5);
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .social-link:hover { border-color: var(--gold); color: var(--gold); }
-    .footer-col h5 {
-      font-family: 'Playfair Display', serif;
-      color: var(--cream);
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-    .footer-links a {
-      color: rgba(248,243,236,0.5);
-      text-decoration: none;
-      font-size: 0.88rem;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--gold); }
-    .footer-bottom {
-      border-top: 1px solid rgba(200,147,58,0.1);
-      padding-top: 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-    }
-    .footer-bottom a { color: var(--gold); text-decoration: none; }
+    /* FOOTER */
+    footer { background: #050505; border-top: 1px solid var(--border); padding: 4rem 6% 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .fb-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.8; margin: 1rem 0 1.5rem; }
+    .socials { display: flex; gap: 0.6rem; }
+    .social-a { width: 34px; height: 34px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+    .social-a:hover { border-color: var(--accent); color: var(--accent); }
+    .fcol h5 { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.08em; margin-bottom: 1.2rem; }
+    .flinks { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .flinks a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .flinks a:hover { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.8rem; display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--muted); }
 
-    /* ── PAGE SECTIONS (multi-page SPA) ── */
-    .page { display: none; }
-    .page.active { display: block; }
+    /* ANIMATIONS */
+    .reveal, .reveal-l, .reveal-r { opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal { transform: translateY(35px); }
+    .reveal-l { transform: translateX(-35px); }
+    .reveal-r { transform: translateX(35px); }
+    .reveal.in, .reveal-l.in, .reveal-r.in { opacity: 1; transform: none; }
+    .stagger > * { opacity: 0; transform: translateY(25px); transition: opacity 0.6s, transform 0.6s; }
+    .stagger.in > *:nth-child(1) { opacity:1;transform:none;transition-delay:0s }
+    .stagger.in > *:nth-child(2) { opacity:1;transform:none;transition-delay:0.1s }
+    .stagger.in > *:nth-child(3) { opacity:1;transform:none;transition-delay:0.2s }
+    .stagger.in > *:nth-child(4) { opacity:1;transform:none;transition-delay:0.3s }
 
-    /* ── ANIMATIONS ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-    .stagger > * {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
-    .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.12s; }
-    .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.24s; }
-    .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.36s; }
-
-    /* ── MOBILE NAV ── */
-    .mobile-nav {
-      position: fixed;
-      inset: 0;
-      background: var(--ink);
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      transform: translateX(100%);
-      transition: transform 0.4s ease;
-    }
-    .mobile-nav.open { transform: translateX(0); }
-    .mobile-nav a {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--cream);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .mobile-nav a:hover { color: var(--gold); }
-    .mobile-nav-close {
-      position: absolute;
-      top: 1.5rem; right: 1.5rem;
-      background: none; border: none;
-      color: var(--cream); font-size: 1.5rem; cursor: pointer;
-    }
-
-    /* ── BANNER ── */
-    .announcement-bar {
-      background: var(--gold);
-      color: var(--ink);
-      text-align: center;
-      padding: 0.6rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1001;
-    }
-    nav { top: 36px; }
-
-    /* ── SUCCESS MSG ── */
-    .success-msg {
-      background: rgba(74,92,68,0.2);
-      border: 1px solid var(--sage);
-      color: #8FCF80;
-      padding: 1rem 1.5rem;
-      font-size: 0.9rem;
-      display: none;
-      margin-top: 1rem;
-    }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .steps-grid { grid-template-columns: 1fr; }
-      .steps-grid::before { display: none; }
-      .fabrics-layout, .story-layout, .faq-layout, .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .steps-grid, .story-grid, .faq-layout, .contact-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .testimonial-card { min-width: calc(50% - 1rem); }
+      .test-card { min-width: calc(50% - 0.75rem); }
+      .modal-inner { grid-template-columns: 1fr; }
+      .gal-grid { grid-template-columns: repeat(2,1fr); }
+      .gitem:nth-child(1), .gitem:nth-child(5) { grid-column: span 1; grid-row: span 1; }
     }
     @media (max-width: 768px) {
       section { padding: 5rem 5%; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-item { grid-column: span 1 !important; grid-row: span 1 !important; }
-      .testimonial-card { min-width: calc(85% - 1rem); }
+      .story-imgs { height: 280px; }
+      .s-img-a { height: 220px; }
+      .s-img-b { height: 150px; }
       .footer-grid { grid-template-columns: 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-      .story-image-stack { height: 300px; }
-      .story-img-main { width: 80%; height: 260px; }
-      .story-img-accent { width: 50%; height: 180px; }
-      .story-badge { width: 100px; height: 100px; padding: 1rem; }
-      .story-badge-num { font-size: 1.8rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; }
+      .test-card { min-width: calc(85% - 0.75rem); }
+      .designs-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+      .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Announcement Bar -->
-  <div class="announcement-bar">✦ Free home measurement visit in select cities — Book now ✦</div>
+<div class="top-bar">🔥 Free home delivery on orders above ₹999 · Use code VASTRA10 for 10% off your first order</div>
 
-  <!-- Mobile Nav -->
-  <div class="mobile-nav" id="mobileNav">
-    <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
-    <a href="#home" onclick="closeMobileNav()">Home</a>
-    <a href="#how-it-works" onclick="closeMobileNav()">How It Works</a>
-    <a href="#fabrics" onclick="closeMobileNav()">Fabrics</a>
-    <a href="#our-story" onclick="closeMobileNav()">Our Story</a>
-    <a href="#gallery" onclick="closeMobileNav()">Gallery</a>
-    <a href="#faq" onclick="closeMobileNav()">FAQ</a>
-    <a href="#contact" onclick="closeMobileNav()">Contact</a>
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()">✕</button>
+  <a href="#home" onclick="closeMob()">Home</a>
+  <a href="#how-it-works" onclick="closeMob()">How It Works</a>
+  <a href="#designs" onclick="closeMob()">Designs</a>
+  <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#faq" onclick="closeMob()">FAQ</a>
+  <a href="#contact" onclick="closeMob()">Order Now</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#home" class="logo">
+    <svg class="logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="17" stroke="#FF3C3C" stroke-width="1.5"/>
+      <line x1="18" y1="5" x2="18" y2="27" stroke="#FF3C3C" stroke-width="2.2" stroke-linecap="round"/>
+      <ellipse cx="18" cy="8" rx="2.8" ry="1.6" stroke="#FF3C3C" stroke-width="1.5" fill="none"/>
+      <path d="M16.5 27 L18 32 L19.5 27 Z" fill="#FF3C3C"/>
+      <path d="M18 8 C26 13 28 22 22 27 Q20 29 18 27" stroke="rgba(255,60,60,0.5)" stroke-width="1.2" fill="none" stroke-dasharray="3 2" stroke-linecap="round"/>
+    </svg>
+    <span class="logo-wm">Vastr<span>a</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#designs">Designs</a></li>
+    <li><a href="#our-story">Our Story</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Order Now</a></li>
+  </ul>
+  <button class="hamburger" onclick="openMob()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="home" style="padding:0;">
+  <div class="slide active">
+    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1600&q=80" alt="Custom printed t-shirts collection" loading="eager"/>
+    <div class="hero-content">
+      <span class="hero-tag">India's Custom Tee Store</span>
+      <h1 class="hero-h1">Wear What<br>You <em>Love</em></h1>
+      <p class="hero-p">Premium custom printed tees — Anime, K-Pop, Sports & more. Pick your design, we measure you at home, deliver to your door.</p>
+      <div class="hero-btns">
+        <a href="#designs" class="btn-red">Browse Designs ↗</a>
+        <a href="#how-it-works" class="btn-ghost">How It Works</a>
+      </div>
+    </div>
   </div>
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=1600&q=80" alt="Anime custom printed tshirt" loading="lazy"/>
+    <div class="hero-content">
+      <span class="hero-tag">Anime Collection</span>
+      <h1 class="hero-h1">Your Fave<br><em>Anime</em><br>On Your Tee</h1>
+      <p class="hero-p">Demon Slayer, Naruto, JJK — stunning HD prints on 240 GSM premium cotton. Look like the main character.</p>
+      <div class="hero-btns">
+        <a href="#designs" class="btn-red">Shop Anime</a>
+        <a href="#contact" class="btn-ghost">Order Now</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1618354691792-d1d42acfd860?w=1600&q=80" alt="Sports custom printed tshirt" loading="lazy"/>
+    <div class="hero-content">
+      <span class="hero-tag">Sports Collection</span>
+      <h1 class="hero-h1">Rep Your<br><em>Team</em></h1>
+      <p class="hero-p">Football, NBA, F1 — vibrant, sweat-resistant prints that look fresh wash after wash. For the real fans.</p>
+      <div class="hero-btns">
+        <a href="#designs" class="btn-red">Shop Sports</a>
+        <a href="#contact" class="btn-ghost">Get Custom</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide-dots">
+    <div class="sdot active" onclick="goSlide(0)"></div>
+    <div class="sdot" onclick="goSlide(1)"></div>
+    <div class="sdot" onclick="goSlide(2)"></div>
+  </div>
+  <div class="slider-nav">
+    <button class="snav-btn" onclick="chgSlide(-1)">←</button>
+    <button class="snav-btn" onclick="chgSlide(1)">→</button>
+  </div>
+  <div class="scroll-hint"><div class="scroll-bar"><div class="scroll-bar-fill"></div></div>Scroll Down</div>
+</section>
 
-  <!-- NAV -->
-  <nav id="mainNav">
-    <a href="#home" class="logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="19" stroke="#C8933A" stroke-width="1.5"/>
-          <!-- Needle -->
-          <line x1="20" y1="6" x2="20" y2="30" stroke="#C8933A" stroke-width="2" stroke-linecap="round"/>
-          <!-- Needle eye -->
-          <ellipse cx="20" cy="9" rx="2.5" ry="1.5" stroke="#C8933A" stroke-width="1.5" fill="none"/>
-          <!-- Needle point -->
-          <path d="M19 30 L20 35 L21 30" stroke="#C8933A" stroke-width="1.5" fill="#C8933A" stroke-linejoin="round"/>
-          <!-- Thread loop -->
-          <path d="M20 9 Q30 16 26 24 Q22 30 20 30" stroke="#1A1209" stroke-width="1.2" fill="none" stroke-dasharray="3 2"/>
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="reveal">
+    <div class="sec-label">The Process</div>
+    <h2 class="sec-title">3 Steps to Your<br><em>Perfect Tee</em></h2>
+    <p class="sec-sub">No confusing size charts. No guessing. We make it effortless — from design selection to your doorstep.</p>
+  </div>
+  <div class="steps-grid stagger">
+    <div class="step-card">
+      <span class="step-num">01</span>
+      <div class="step-icon-box">🎨</div>
+      <h3>Choose Your Design</h3>
+      <p>Browse 200+ exclusive prints across Anime, K-Pop, Sports, Vintage, and more. Click any design to instantly preview it on a t-shirt in your chosen color. Or upload your own artwork!</p>
+      <span class="step-pill">200+ Designs</span>
+    </div>
+    <div class="step-card">
+      <span class="step-num">02</span>
+      <div class="step-icon-box">📍</div>
+      <h3>Share Your Address</h3>
+      <p>Choose a convenient time and we send a sizing expert to your home. 15-minute process, perfectly recorded measurements. No more ill-fitting standard sizes — ever.</p>
+      <span class="step-pill">Free Home Visit</span>
+    </div>
+    <div class="step-card">
+      <span class="step-num">03</span>
+      <div class="step-icon-box">🚀</div>
+      <h3>Receive Your Tee</h3>
+      <p>Premium DTF printing on 240 GSM ringspun cotton. Colourfast for 60+ washes. Delivered in 5–7 days with a quality guarantee and free one-time reprint if needed.</p>
+      <span class="step-pill">5–7 Day Delivery</span>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGNS + TSHIRT PREVIEW -->
+<section id="designs">
+  <div class="reveal">
+    <div class="sec-label">Our Collections</div>
+    <h2 class="sec-title">Pick a Design,<br><em>See It On Your Tee</em></h2>
+    <p class="sec-sub">Click any design to instantly preview it on a t-shirt. Choose your color, size and order.</p>
+  </div>
+  <div class="category-tabs">
+    <button class="cat-tab active" onclick="filterCat('all',this)">All</button>
+    <button class="cat-tab" onclick="filterCat('anime',this)">Anime</button>
+    <button class="cat-tab" onclick="filterCat('kpop',this)">K-Pop</button>
+    <button class="cat-tab" onclick="filterCat('sports',this)">Sports</button>
+    <button class="cat-tab" onclick="filterCat('vintage',this)">Vintage</button>
+    <button class="cat-tab" onclick="filterCat('streetwear',this)">Streetwear</button>
+  </div>
+  <div class="designs-grid" id="designGrid"></div>
+  <span class="preview-hint reveal">👆 Click any design card to preview it live on a t-shirt mockup</span>
+</section>
+
+<!-- TSHIRT MODAL -->
+<div class="tshirt-modal" id="tshirtModal">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <!-- LEFT: T-SHIRT PREVIEW -->
+    <div class="modal-left">
+      <div class="color-btns">
+        <button class="cdot active" style="background:#ffffff" title="White" onclick="setColor('#ffffff','#e8e8e8','multiply',this)"></button>
+        <button class="cdot" style="background:#1a1a1a" title="Black" onclick="setColor('#1a1a1a','#111111','screen',this)"></button>
+        <button class="cdot" style="background:#1a2a4a" title="Navy" onclick="setColor('#1a2a4a','#152238','screen',this)"></button>
+        <button class="cdot" style="background:#8B0000" title="Red" onclick="setColor('#8B0000','#7a0000','screen',this)"></button>
+        <button class="cdot" style="background:#2d5a27" title="Green" onclick="setColor('#2d5a27','#254d20','screen',this)"></button>
+        <button class="cdot" style="background:#4a3728" title="Brown" onclick="setColor('#4a3728','#3d2d1f','screen',this)"></button>
+      </div>
+
+      <div class="shirt-wrap">
+        <!-- T-shirt SVG with embedded design -->
+        <svg id="tshirtSVG" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="shirtShadow">
+              <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="rgba(0,0,0,0.4)"/>
+            </filter>
+            <clipPath id="teeClip">
+              <path d="M55,42 L18,88 L62,108 L62,295 L238,295 L238,108 L282,88 L245,42 C234,48 212,64 195,66 C182,62 168,55 150,53 C132,55 118,62 105,66 C88,64 66,48 55,42 Z"/>
+            </clipPath>
+          </defs>
+          <!-- Shirt body -->
+          <path id="svgBody"
+            d="M55,42 L18,88 L62,108 L62,295 L238,295 L238,108 L282,88 L245,42 C234,48 212,64 195,66 C182,62 168,55 150,53 C132,55 118,62 105,66 C88,64 66,48 55,42 Z"
+            fill="#ffffff" filter="url(#shirtShadow)"/>
+          <!-- Collar -->
+          <path id="svgCollar"
+            d="M105,66 C120,84 134,92 150,94 C166,92 180,84 195,66 C190,59 180,54 165,52 C158,50 154,49 150,49 C146,49 142,50 135,52 C120,54 110,59 105,66 Z"
+            fill="#e8e8e8"/>
+          <!-- Left sleeve shadow -->
+          <path id="svgSleeveL" d="M18,88 L62,108 L62,138 L26,126 Z" fill="#efefef" opacity="0.7"/>
+          <!-- Right sleeve shadow -->
+          <path id="svgSleeveR" d="M282,88 L238,108 L238,138 L274,126 Z" fill="#efefef" opacity="0.7"/>
+          <!-- Design image placed on shirt -->
+          <image id="svgDesign"
+            href=""
+            x="88" y="105" width="124" height="120"
+            clip-path="url(#teeClip)"
+            preserveAspectRatio="xMidYMid meet"
+          />
         </svg>
       </div>
-      <span class="logo-text">Thread<span>Craft</span></span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#how-it-works">How It Works</a></li>
-      <li><a href="#fabrics">Fabrics</a></li>
-      <li><a href="#our-story">Our Story</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact" class="nav-cta">Get Started</a></li>
-    </ul>
-    <button class="hamburger" onclick="openMobileNav()" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+      <p style="font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--muted);letter-spacing:0.1em;text-align:center;">MOCKUP · COLORS MAY VARY SLIGHTLY IN PRINT</p>
+    </div>
 
-  <!-- ═══════════════ HERO SLIDER ═══════════════ -->
-  <section id="home" style="padding:0;">
-    <div class="slider" id="heroSlider">
-      <div class="slide active">
-        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1600&q=80" alt="Custom tailored fabric collection" loading="eager" />
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <div class="slide-tag">Bespoke Craftsmanship</div>
-          <h1>Wear What's <em>Truly</em> Yours</h1>
-          <p>Premium custom printing and tailoring — crafted around your measurements, delivered to your door.</p>
-          <div class="hero-buttons">
-            <a href="#how-it-works" class="btn-primary"><span>Begin Your Journey</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-            <a href="#gallery" class="btn-outline">View Gallery</a>
-          </div>
+    <!-- RIGHT: CONFIG -->
+    <div class="modal-right">
+      <div>
+        <div class="sec-label" id="mCatLabel">Anime</div>
+        <h3 id="mTitle">Design Name</h3>
+      </div>
+      <div>
+        <div class="sec-label" style="margin-bottom:0.4rem;">Select Size</div>
+        <div class="size-grid">
+          <button class="size-btn" onclick="pickSize(this)">XS</button>
+          <button class="size-btn active" onclick="pickSize(this)">S</button>
+          <button class="size-btn" onclick="pickSize(this)">M</button>
+          <button class="size-btn" onclick="pickSize(this)">L</button>
+          <button class="size-btn" onclick="pickSize(this)">XL</button>
+          <button class="size-btn" onclick="pickSize(this)">XXL</button>
+          <button class="size-btn" onclick="pickSize(this)">3XL</button>
+        </div>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:0.6rem;">Not sure? <span style="color:var(--accent);cursor:pointer;" onclick="goOrder()">Book free home measurement →</span></p>
+      </div>
+      <div>
+        <div class="sec-label" style="margin-bottom:0.4rem;">Quantity</div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span class="qty-num" id="qtyNum">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
         </div>
       </div>
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=1600&q=80" alt="Fabric selection and texture close up" loading="lazy" />
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <div class="slide-tag">Premium Fabrics</div>
-          <h1>100+ Curated <em>Fabrics</em> Await</h1>
-          <p>From breathable linens to luxurious silks — choose the perfect material for every occasion.</p>
-          <div class="hero-buttons">
-            <a href="#fabrics" class="btn-primary"><span>Explore Fabrics</span></a>
-            <a href="#contact" class="btn-outline">Book Consultation</a>
-          </div>
-        </div>
+      <div>
+        <div class="modal-price">₹<span id="mPrice">699</span></div>
+        <div class="modal-price-note">incl. GST · Free shipping above ₹999</div>
       </div>
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1598452963314-b09f397a5c48?w=1600&q=80" alt="Professional tailor measuring at home" loading="lazy" />
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <div class="slide-tag">Home Measurement Service</div>
-          <h1>We Come <em>To You</em></h1>
-          <p>Our expert tailors visit your home for precise measurements. No trips, no guesswork — just perfection.</p>
-          <div class="hero-buttons">
-            <a href="#contact" class="btn-primary"><span>Schedule Visit</span></a>
-            <a href="#our-story" class="btn-outline">Our Story</a>
-          </div>
-        </div>
+      <div class="modal-actions">
+        <button class="btn-red" onclick="goOrder()" style="justify-content:center;padding:1rem;font-size:0.9rem;">🛒 Order This Design</button>
+        <button class="btn-ghost" onclick="closeModal()" style="justify-content:center;font-size:0.85rem;">Continue Browsing</button>
       </div>
+      <p class="modal-specs">✓ 240 GSM Ringspun Cotton · ✓ DTF / Screen Print · ✓ 60+ wash colourfast · ✓ 5–7 day delivery · ✓ Free reprint guarantee</p>
     </div>
-    <div class="slider-dots" id="sliderDots">
-      <div class="dot active" onclick="goToSlide(0)"></div>
-      <div class="dot" onclick="goToSlide(1)"></div>
-      <div class="dot" onclick="goToSlide(2)"></div>
-    </div>
-    <div class="slider-controls">
-      <button class="slider-btn" onclick="changeSlide(-1)" aria-label="Previous">&#8592;</button>
-      <button class="slider-btn" onclick="changeSlide(1)" aria-label="Next">&#8594;</button>
-    </div>
-    <div class="scroll-indicator">
-      <div class="scroll-line"></div>
-      Scroll to explore
-    </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ═══════════════ HOW IT WORKS ═══════════════ -->
-  <section id="how-it-works">
-    <div class="steps-header reveal">
-      <div class="section-label">The Process</div>
-      <h2 class="section-title" style="color:var(--cream);">Three Steps to<br><em>Your Perfect Garment</em></h2>
-      <p class="section-subtitle">We've reimagined the tailoring experience — making it effortless, precise, and entirely personal.</p>
+<!-- OUR STORY -->
+<section id="our-story">
+  <div class="story-grid">
+    <div class="story-imgs reveal-l">
+      <img class="s-img-a" src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&q=80" alt="Vastra printing studio"/>
+      <img class="s-img-b" src="https://images.unsplash.com/photo-1558171813-1c8d3e88db73?w=400&q=80" alt="Close up print quality"/>
+      <div class="s-badge"><span class="s-badge-num">3+</span><span class="s-badge-txt">Years Printing</span></div>
     </div>
-    <div class="steps-grid stagger">
-      <div class="step-card">
-        <span class="step-number">01</span>
-        <div class="step-icon">🧵</div>
-        <h3>Select Your Fabric</h3>
-        <p>Browse our curated collection of over 100 premium fabrics. From lightweight cotton voiles to rich jacquards — each swatch is photographed in natural light so you see exactly what you're choosing. Request physical samples delivered free.</p>
-        <span class="step-badge">100+ Fabric Options</span>
-      </div>
-      <div class="step-card">
-        <span class="step-number">02</span>
-        <div class="step-icon">📍</div>
-        <h3>Share Your Address</h3>
-        <p>Choose a convenient time slot and our certified master tailor visits your home. We take 22 precise measurements using professional tools — no rushing, no stress. The visit takes about 45 minutes and includes a style consultation.</p>
-        <span class="step-badge">Free Home Visit</span>
-      </div>
-      <div class="step-card">
-        <span class="step-number">03</span>
-        <div class="step-icon">📦</div>
-        <h3>Receive Your Masterpiece</h3>
-        <p>Your garment is crafted by skilled artisans with 10+ years of experience. We use hand-finished seams, quality trimmings, and include one complimentary alteration. Delivered in 10–14 days in sustainable packaging.</p>
-        <span class="step-badge">10–14 Day Delivery</span>
+    <div class="story-text reveal-r">
+      <div class="sec-label">Our Story</div>
+      <h2 class="sec-title">Born From a Love of<br><em>Culture & Print</em></h2>
+      <p>Vastra was born in 2021 in a small Delhi studio, when two anime fans couldn't find quality merch that actually fit. So they built it themselves — a custom tee brand that puts culture first.</p>
+      <p>Today we ship across India, with a growing community of anime lovers, K-Pop stans, and sports fans who wear Vastra as a badge of identity. Every tee we make is a piece of someone's story.</p>
+      <div class="story-stats stagger">
+        <div><span class="stat-n">8K+</span><span class="stat-l">Happy Customers</span></div>
+        <div><span class="stat-n">200+</span><span class="stat-l">Unique Designs</span></div>
+        <div><span class="stat-n">99%</span><span class="stat-l">5-Star Reviews</span></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════ FABRICS ═══════════════ -->
-  <section id="fabrics">
-    <div class="fabrics-layout">
-      <div class="reveal-left">
-        <div class="fabrics-grid">
-          <div class="fabric-card">
-            <span class="fabric-tag">Most Popular</span>
-            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Premium Egyptian cotton fabric" />
-            <div class="fabric-card-body">
-              <h4>Egyptian Cotton</h4>
-              <p>Breathable · All seasons · Classic finish</p>
-            </div>
-          </div>
-          <div class="fabric-card">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Pure silk fabric" />
-            <div class="fabric-card-body">
-              <h4>Pure Silk</h4>
-              <p>Luxurious · Evening wear · Delicate drape</p>
-            </div>
-          </div>
-          <div class="fabric-card">
-            <span class="fabric-tag">New</span>
-            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=80" alt="Organic linen fabric" />
-            <div class="fabric-card-body">
-              <h4>Organic Linen</h4>
-              <p>Sustainable · Casual · Natural texture</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="fabrics-text reveal-right">
-        <div class="section-label">Our Materials</div>
-        <h2 class="section-title">Fabrics Sourced from <em>the World's Finest</em> Mills</h2>
-        <p class="section-subtitle">Every fabric in our collection is ethically sourced, quality-tested, and curated for its beauty, comfort, and durability. We partner with mills in Italy, India, and Japan.</p>
-        <ul class="fabric-features">
-          <li>OEKO-TEX certified fabrics — safe for skin</li>
-          <li>Shrinkage-tested before crafting begins</li>
-          <li>Free swatch samples delivered to you</li>
-          <li>Custom prints available on select fabrics</li>
-          <li>Eco-friendly dye processes on all collections</li>
-        </ul>
-        <a href="#contact" class="btn-primary" style="background:var(--ink);color:var(--cream);"><span>Request Swatches</span></a>
-      </div>
-    </div>
-  </section>
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="reveal">
+    <div class="sec-label">Customer Looks</div>
+    <h2 class="sec-title">Real People,<br><em>Real Fits</em></h2>
+  </div>
+  <div class="gal-grid reveal">
+    <div class="gitem"><img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80" alt="Customer wearing custom printed tshirt"/><div class="gitem-ov">VIEW LOOK</div></div>
+    <div class="gitem"><img src="https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&q=80" alt="K-Pop custom tee"/><div class="gitem-ov">VIEW LOOK</div></div>
+    <div class="gitem"><img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=400&q=80" alt="Sports printed tshirt"/><div class="gitem-ov">VIEW LOOK</div></div>
+    <div class="gitem"><img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&q=80" alt="Streetwear tshirt"/><div class="gitem-ov">VIEW LOOK</div></div>
+    <div class="gitem"><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&q=80" alt="Custom vintage tee"/><div class="gitem-ov">VIEW LOOK</div></div>
+    <div class="gitem"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80" alt="Group in matching custom tshirts"/><div class="gitem-ov">VIEW LOOK</div></div>
+  </div>
+</section>
 
-  <!-- ═══════════════ OUR STORY ═══════════════ -->
-  <section id="our-story">
-    <div class="story-layout">
-      <div class="story-image-stack reveal-left">
-        <img class="story-img-main" src="https://images.unsplash.com/photo-1581591524425-c7e0978865fc?w=600&q=80" alt="ThreadCraft tailor at work" />
-        <img class="story-img-accent" src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&q=80" alt="Custom garment details" />
-        <div class="story-badge">
-          <span class="story-badge-num">12+</span>
-          <span class="story-badge-text">Years of Excellence</span>
-        </div>
-      </div>
-      <div class="story-text reveal-right">
-        <div class="section-label">Our Story</div>
-        <h2 class="section-title">Born from a Love of <em>Perfect Fit</em></h2>
-        <p>ThreadCraft was founded in 2012 by master tailor Arjun Mehta, who believed that every person deserves clothing that fits like a second skin — not clothing that they have to fit into.</p>
-        <p>What began as a single atelier in Mumbai has grown into a beloved brand serving thousands of happy customers across India. But our philosophy has never changed: slow fashion, exceptional craft, and the human touch.</p>
-        <p>Today, our team of 40+ skilled artisans blends time-honoured tailoring techniques with modern printing technology to create garments that are as individual as the people who wear them.</p>
-        <div class="story-stats stagger">
-          <div class="stat-item">
-            <span class="stat-num">12K+</span>
-            <span class="stat-label">Happy Customers</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">40+</span>
-            <span class="stat-label">Skilled Artisans</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">98%</span>
-            <span class="stat-label">Satisfaction Rate</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ PROCESS ═══════════════ -->
-  <section id="process">
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="test-header">
     <div class="reveal">
-      <div class="section-label">How We Craft</div>
-      <h2 class="section-title">From Thread to <em>Treasure</em></h2>
+      <div class="sec-label">Reviews</div>
+      <h2 class="sec-title">What The <em>Fandom</em> Says</h2>
     </div>
-    <div class="process-grid stagger">
-      <div class="process-item">
-        <div class="process-icon-wrap">🎨</div>
-        <h4>Design Consultation</h4>
-        <p>Our stylist helps you define the look — silhouette, collar, cuts, and custom print details.</p>
-      </div>
-      <div class="process-item">
-        <div class="process-icon-wrap">📐</div>
-        <h4>Precision Measurement</h4>
-        <p>22-point measurement system at your home, taken by a certified tailor.</p>
-      </div>
-      <div class="process-item">
-        <div class="process-icon-wrap">✂️</div>
-        <h4>Expert Crafting</h4>
-        <p>Hand-cut and stitched by artisans with 10+ years of experience, with quality checks at every stage.</p>
-      </div>
-      <div class="process-item">
-        <div class="process-icon-wrap">🚚</div>
-        <h4>Doorstep Delivery</h4>
-        <p>Your finished garment arrives in sustainable packaging with a one free-alteration guarantee.</p>
-      </div>
+    <div class="tarrows">
+      <button class="tarrow" onclick="moveTst(-1)">←</button>
+      <button class="tarrow" onclick="moveTst(1)">→</button>
     </div>
-  </section>
+  </div>
+  <div class="test-track-wrap">
+    <div class="test-track" id="testTrack">
+      <div class="test-card"><span class="test-qm">"</span><div class="test-stars">★★★★★</div><p class="test-txt">The Demon Slayer tee is insane quality. Colors haven't faded after 15 washes. The home measurement was so convenient — never buying off-the-rack again!</p><div class="test-author"><img class="test-av" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Arjun K."/><div><div class="test-name">Arjun K.</div><div class="test-role">Anime fan · Delhi</div></div></div></div>
+      <div class="test-card"><span class="test-qm">"</span><div class="test-stars">★★★★★</div><p class="test-txt">Ordered a BTS tee and honestly it looks better than official merch. Sharp print, thick fabric, arrived in 6 days! Vastra is my go-to now.</p><div class="test-author"><img class="test-av" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Priya M."/><div><div class="test-name">Priya M.</div><div class="test-role">K-Pop stan · Bangalore</div></div></div></div>
+      <div class="test-card"><span class="test-qm">"</span><div class="test-stars">★★★★★</div><p class="test-txt">Got a Real Madrid tee for matchday and the whole squad noticed it. Premium print, super comfortable — and the size fits perfectly since they measured me.</p><div class="test-author"><img class="test-av" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Vikram S."/><div><div class="test-name">Vikram S.</div><div class="test-role">Football fan · Pune</div></div></div></div>
+      <div class="test-card"><span class="test-qm">"</span><div class="test-stars">★★★★☆</div><p class="test-txt">Ordered a One Piece tee with my own design. The preview on the website is super fun — you see exactly how it'll look. Came out perfect, will reorder!</p><div class="test-author"><img class="test-av" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Sneha R."/><div><div class="test-name">Sneha R.</div><div class="test-role">Anime artist · Mumbai</div></div></div></div>
+      <div class="test-card"><span class="test-qm">"</span><div class="test-stars">★★★★★</div><p class="test-txt">Bulk ordered 20 F1 tees for our college club. Great discount, consistent quality on every piece. Our McLaren meetup looked incredible!</p><div class="test-author"><img class="test-av" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Rohan D."/><div><div class="test-name">Rohan D.</div><div class="test-role">F1 fan · Hyderabad</div></div></div></div>
+    </div>
+  </div>
+</section>
 
-  <!-- ═══════════════ GALLERY ═══════════════ -->
-  <section id="gallery">
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-layout">
     <div class="reveal">
-      <div class="section-label">Showcase</div>
-      <h2 class="section-title">Garments We're <em>Proud Of</em></h2>
+      <div class="sec-label">Got Questions?</div>
+      <h2 class="sec-title">FAQ</h2>
+      <p class="sec-sub" style="margin-top:1rem;">Everything about Vastra custom tees. Still confused? Drop us a message.</p>
+      <a href="#contact" class="btn-red" style="margin-top:2rem;display:inline-flex;text-decoration:none;">Ask Us</a>
     </div>
-    <div class="gallery-grid reveal">
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=80" alt="Custom printed dress" />
-        <div class="gallery-overlay">+</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500&q=80" alt="Bespoke shirt" />
-        <div class="gallery-overlay">+</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80" alt="Tailored outfit" />
-        <div class="gallery-overlay">+</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&q=80" alt="Custom ethnic wear" />
-        <div class="gallery-overlay">+</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&q=80" alt="Printed fabric garment" />
-        <div class="gallery-overlay">+</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Luxury custom clothing" />
-        <div class="gallery-overlay">+</div>
-      </div>
+    <div class="reveal-r">
+      <div class="faq-item"><button class="faq-q">What print method do you use? <span class="faq-ico">+</span></button><div class="faq-a">We use DTF (Direct-to-Film) printing for photorealistic, vibrant prints on all fabric colors — best for detailed anime and K-Pop artwork. For large orders (50+), we use screen printing for extra durability and cost savings.</div></div>
+      <div class="faq-item"><button class="faq-q">How many washes does the print last? <span class="faq-ico">+</span></button><div class="faq-a">Our DTF prints last 60+ washes without visible fading when washed inside-out in cold water. We use eco-certified, wash-safe inks — no cheap plastisol.</div></div>
+      <div class="faq-item"><button class="faq-q">Can I upload my own design or artwork? <span class="faq-ico">+</span></button><div class="faq-a">Absolutely! Select "Custom Design" when ordering, upload your artwork (300 DPI minimum recommended), and we'll send a digital mockup for approval before printing begins. Your design, your tee.</div></div>
+      <div class="faq-item"><button class="faq-q">Which cities offer home measurement? <span class="faq-ico">+</span></button><div class="faq-a">Currently: Delhi NCR, Mumbai, Bangalore, Pune, and Hyderabad. For other cities, we ship a free DIY measurement kit with a step-by-step guide to get your perfect fit remotely.</div></div>
+      <div class="faq-item"><button class="faq-q">What fabric quality do you use? <span class="faq-ico">+</span></button><div class="faq-a">All Vastra tees are 100% combed ringspun cotton at 240 GSM — thick, soft, and durable. Bio-washed options available for extra softness. All fabric is OEKO-TEX certified, free from harmful chemicals.</div></div>
+      <div class="faq-item"><button class="faq-q">Do you offer bulk or group orders? <span class="faq-ico">+</span></button><div class="faq-a">Yes! Groups of 10+ get 20% off; 50+ get 35% off plus a dedicated account manager. Perfect for college clubs, fan meetups, or corporate events. Contact us for bulk pricing.</div></div>
+      <div class="faq-item"><button class="faq-q">What if I'm not happy with my order? <span class="faq-ico">+</span></button><div class="faq-a">We offer a free reprint if print quality doesn't match the approved mockup, or if there's a manufacturing defect. Since tees are made-to-order, we don't accept returns for size issues — which is exactly why we offer free home measurement!</div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
-  <section id="testimonials">
-    <div class="testimonials-header">
-      <div class="reveal">
-        <div class="section-label">Client Love</div>
-        <h2 class="section-title" style="color:var(--cream);">What Our Customers <em>Say</em></h2>
-      </div>
-      <div class="testimonial-controls">
-        <button class="test-btn" onclick="scrollTestimonials(-1)">&#8592;</button>
-        <button class="test-btn" onclick="scrollTestimonials(1)">&#8594;</button>
-      </div>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="sec-label">Order / Enquire</div>
+    <h2 class="sec-title">Start Your <em>Vastra</em> Order</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal-l">
+      <h3>We're Ready When You Are</h3>
+      <p>Fill the form and our team will reach out within 6 hours to confirm your design, measurement slot, and payment. For urgent orders, WhatsApp us directly.</p>
+      <div class="cdetail"><div class="cdetail-ic">📍</div><span>Vastra Studio, Lajpat Nagar, New Delhi 110024</span></div>
+      <div class="cdetail"><div class="cdetail-ic">📞</div><span>+91 98765 43210</span></div>
+      <div class="cdetail"><div class="cdetail-ic">📱</div><span>WhatsApp: +91 98765 43210</span></div>
+      <div class="cdetail"><div class="cdetail-ic">✉️</div><span>hello@vastra.in</span></div>
+      <div class="cdetail"><div class="cdetail-ic">🕐</div><span>Mon–Sat: 9 AM – 8 PM IST</span></div>
     </div>
-    <div class="testimonials-track-wrapper">
-      <div class="testimonials-track" id="testimonialsTrack">
-        <div class="testimonial-card">
-          <span class="quote-mark">"</span>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">The tailor came to my apartment on a Sunday morning — so convenient. The kurta I got is absolutely stunning. The print quality is beyond what I expected. Wearing it to every occasion now!</p>
-          <div class="testimonial-author">
-            <img class="author-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Priya S." />
-            <div><div class="author-name">Priya Sharma</div><div class="author-role">Marketing Director, Mumbai</div></div>
-          </div>
+    <div class="form-box reveal-r">
+      <h3>Book a Free Consultation</h3>
+      <form class="cform" id="mainForm" novalidate>
+        <div class="frow">
+          <div class="fg"><label>First Name *</label><input type="text" id="f-first" placeholder="Arjun" required/></div>
+          <div class="fg"><label>Last Name</label><input type="text" id="f-last" placeholder="Kumar"/></div>
         </div>
-        <div class="testimonial-card">
-          <span class="quote-mark">"</span>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">I've tried many tailors but ThreadCraft is on another level. The fabric selection process was so much fun, and the fit is immaculate. My wedding sherwanis arrived looking exactly like the reference I sent.</p>
-          <div class="testimonial-author">
-            <img class="author-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Rahul M." />
-            <div><div class="author-name">Rahul Menon</div><div class="author-role">Software Engineer, Bangalore</div></div>
-          </div>
+        <div class="fg"><label>Email Address *</label><input type="email" id="f-email" placeholder="arjun@gmail.com" required/></div>
+        <div class="fg"><label>Phone / WhatsApp *</label><input type="tel" id="f-phone" placeholder="+91 98765 43210" required/></div>
+        <div class="fg"><label>City</label>
+          <select id="f-city">
+            <option value="">Select city</option>
+            <option>Delhi NCR</option><option>Mumbai</option>
+            <option>Bangalore</option><option>Pune</option>
+            <option>Hyderabad</option><option>Other</option>
+          </select>
         </div>
-        <div class="testimonial-card">
-          <span class="quote-mark">"</span>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">Ordered four dresses and they all fit like they were made for me — because they were! The home measurement visit made it so easy. I never want to buy off-the-rack again.</p>
-          <div class="testimonial-author">
-            <img class="author-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Ananya R." />
-            <div><div class="author-name">Ananya Reddy</div><div class="author-role">Entrepreneur, Hyderabad</div></div>
-          </div>
+        <div class="fg"><label>Interested In</label>
+          <select id="f-interest">
+            <option value="">Select category</option>
+            <option>Anime T-Shirts</option><option>K-Pop T-Shirts</option>
+            <option>Sports T-Shirts</option><option>Vintage / Streetwear</option>
+            <option>Custom / My Own Design</option><option>Bulk Order (10+)</option>
+          </select>
         </div>
-        <div class="testimonial-card">
-          <span class="quote-mark">"</span>
-          <div class="stars">★★★★☆</div>
-          <p class="testimonial-text">The linen fabric I chose is incredible — light, well-printed, and the color didn't fade after washing. Very happy with the quality and the packaging was eco-friendly too. Will reorder for sure!</p>
-          <div class="testimonial-author">
-            <img class="author-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Vikram J." />
-            <div><div class="author-name">Vikram Joshi</div><div class="author-role">Architect, Pune</div></div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <span class="quote-mark">"</span>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">I was skeptical about custom printing online, but ThreadCraft changed my mind completely. The entire experience — from fabric selection to delivery — was smooth, fun, and the results were breathtaking.</p>
-          <div class="testimonial-author">
-            <img class="author-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Deepa K." />
-            <div><div class="author-name">Deepa Krishnan</div><div class="author-role">Fashion Blogger, Delhi</div></div>
-          </div>
-        </div>
+        <div class="fg"><label>Tell Us More (Optional)</label><textarea id="f-msg" placeholder="Which design? Quantity? Any references?"></textarea></div>
+        <button type="submit" class="fsubmit">⚡ Submit Enquiry</button>
+        <p class="fnote">We'll reach out within 6 hours. No spam, ever.</p>
+      </form>
+      <div class="fsuccess" id="fsuccess">🎉 Enquiry received! We'll WhatsApp you within 6 hours to confirm your order details.</div>
+      <!--
+        GOOGLE FORM ENTRY ID INSTRUCTIONS:
+        To find your entry IDs:
+        1. Open your Google Form in a browser
+        2. Right-click → Inspect → go to Network tab
+        3. Submit the form manually once
+        4. Look for a POST request to formResponse
+        5. In the request body, you'll see entry.XXXXXXXXX=value
+        6. Replace entry.YOUR_FIELD_ID below with the real IDs
+      -->
+      <p class="gform-link">Prefer Google Forms? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdtTqHr3upjVRqg6NBD2In_EXgOUiEv8YRrEOWFB8GzomrQEg/viewform" target="_blank">Open Google Form →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.06em;">Vastr<span style="color:var(--accent);">a</span></span>
+      <p class="fb-desc">India's premier custom printed t-shirt brand — wear what you love. Anime · K-Pop · Sports · Streetwear.</p>
+      <div class="socials">
+        <a class="social-a" href="#">𝕀</a><a class="social-a" href="#">𝕏</a>
+        <a class="social-a" href="#">▶</a><a class="social-a" href="#">𝕎</a>
       </div>
     </div>
-  </section>
+    <div class="fcol"><h5>Explore</h5><ul class="flinks"><li><a href="#how-it-works">How It Works</a></li><li><a href="#designs">All Designs</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#our-story">Our Story</a></li></ul></div>
+    <div class="fcol"><h5>Collections</h5><ul class="flinks"><li><a href="#designs">Anime</a></li><li><a href="#designs">K-Pop</a></li><li><a href="#designs">Sports</a></li><li><a href="#designs">Vintage</a></li><li><a href="#designs">Streetwear</a></li></ul></div>
+    <div class="fcol"><h5>Support</h5><ul class="flinks"><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact Us</a></li><li><a href="#">Shipping Policy</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Vastra. All rights reserved. Made with ❤️ in India.</span>
+    <span>Custom tees for the culture.</span>
+  </div>
+</footer>
 
-  <!-- ═══════════════ FAQ ═══════════════ -->
-  <section id="faq">
-    <div class="faq-layout">
-      <div class="reveal">
-        <div class="section-label">Got Questions?</div>
-        <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
-        <p class="section-subtitle" style="margin-top:1rem;">Everything you need to know about the ThreadCraft experience. Can't find your answer? Drop us a message.</p>
-        <a href="#contact" class="btn-primary" style="margin-top:2rem;background:var(--ink);color:var(--cream);display:inline-flex;"><span>Ask Us Directly</span></a>
-      </div>
-      <div class="faq-list reveal-right" id="faqList">
-        <div class="faq-item">
-          <button class="faq-question">Which cities do you offer home measurement visits? <span class="faq-icon">+</span></button>
-          <div class="faq-answer">We currently offer home visits in Mumbai, Delhi NCR, Bangalore, Hyderabad, Pune, and Chennai. We're expanding rapidly — if your city isn't listed, choose the virtual measurement option and we'll guide you through our self-measurement kit.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">How accurate will my garment fit? <span class="faq-icon">+</span></button>
-          <div class="faq-answer">Our 22-point measurement system combined with digital pattern drafting gives us a 98% first-fit success rate. If for any reason your garment needs adjusting, we offer one complimentary alteration within 30 days of delivery — no questions asked.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">Can I provide my own design or print? <span class="faq-icon">+</span></button>
-          <div class="faq-answer">Absolutely! You can upload your custom artwork, pattern, or print design during the ordering process. Our team reviews it for print quality and provides a digital mockup before crafting begins. Minimum resolution of 300 DPI is recommended.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">How long does the entire process take? <span class="faq-icon">+</span></button>
-          <div class="faq-answer">From the measurement visit to delivery, the standard timeline is 10–14 working days. We also offer an Express service (6–8 days) at a small additional fee. You'll receive WhatsApp updates at every stage of crafting.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">What is your return and refund policy? <span class="faq-icon">+</span></button>
-          <div class="faq-answer">Since each garment is made to order, we don't accept returns. However, if there's a defect in workmanship or the measurements were recorded incorrectly on our end, we'll remake the garment at no charge. Your satisfaction is our guarantee.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">How do I care for my custom garment? <span class="faq-icon">+</span></button>
-          <div class="faq-answer">Each garment comes with a fabric-specific care card. Generally, we recommend cold machine wash or hand wash for cottons and linens, and dry cleaning for silks. All our prints are colourfast-tested to withstand at least 40 washes without fading.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">Can I order for the whole family or in bulk? <span class="faq-icon">+</span></button>
-          <div class="faq-answer">Yes! We love family or group orders — perfect for weddings, corporate uniforms, or events. Group orders of 5+ garments receive a 15% discount and a dedicated relationship manager. Contact us to discuss your requirements.</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<script>
+// ══════════════════════════
+// DESIGN DATA
+// ══════════════════════════
+const designs = [
+  {id:1,name:'Demon Slayer Fire',cat:'anime',price:699,img:'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=400&q=80'},
+  {id:2,name:'Naruto Sage Mode',cat:'anime',price:699,img:'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400&q=80'},
+  {id:3,name:'Attack on Titan',cat:'anime',price:749,img:'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=400&q=80'},
+  {id:4,name:'Jujutsu Kaisen',cat:'anime',price:699,img:'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=80'},
+  {id:5,name:'BTS Group Print',cat:'kpop',price:749,img:'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=400&q=80'},
+  {id:6,name:'BLACKPINK Tour',cat:'kpop',price:749,img:'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&q=80'},
+  {id:7,name:'Stray Kids',cat:'kpop',price:699,img:'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=80'},
+  {id:8,name:'Real Madrid CF',cat:'sports',price:799,img:'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=80'},
+  {id:9,name:'NBA All-Star',cat:'sports',price:749,img:'https://images.unsplash.com/photo-1504450758481-7338eba7524a?w=400&q=80'},
+  {id:10,name:'F1 McLaren Fan',cat:'sports',price:799,img:'https://images.unsplash.com/photo-1541447271487-09612b3f49f7?w=400&q=80'},
+  {id:11,name:'Vintage Washed',cat:'vintage',price:649,img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'},
+  {id:12,name:'Acid Wash Retro',cat:'vintage',price:649,img:'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=400&q=80'},
+  {id:13,name:'Urban Graffiti',cat:'streetwear',price:699,img:'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&q=80'},
+  {id:14,name:'Tokyo Streets',cat:'streetwear',price:699,img:'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&q=80'},
+];
 
-  <!-- ═══════════════ CONTACT / FORM ═══════════════ -->
-  <section id="contact">
-    <div class="reveal">
-      <div class="section-label">Get In Touch</div>
-      <h2 class="section-title" style="color:var(--cream);">Start Your <em>ThreadCraft</em> Journey</h2>
-    </div>
-    <div class="contact-layout">
-      <div class="contact-info reveal-left">
-        <h3>We'd Love to Hear from You</h3>
-        <p>Whether you're ready to place your first order, have questions about fabrics, or want to plan a bulk order for a special occasion — our team is ready to help you every step of the way.</p>
-        <div class="contact-details">
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📍</div>
-            <span>ThreadCraft Atelier, 42 Textile Lane, Dadar, Mumbai 400014</span>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📞</div>
-            <span>+91 98765 43210</span>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">✉️</div>
-            <span>hello@threadcraft.in</span>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">🕐</div>
-            <span>Mon–Sat: 9 AM – 7 PM IST</span>
-          </div>
-        </div>
-      </div>
+let qty=1, basePrice=699, curDesign=null;
 
-      <!-- EMBEDDED GOOGLE FORM (styled iframe + custom overlay form) -->
-      <div class="form-wrapper reveal-right">
-        <h3>Book a Free Consultation</h3>
-        <!-- Custom styled form that submits to Google Forms -->
-        <form class="custom-form" id="consultationForm" onsubmit="submitToGoogleForms(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="entry.firstName" placeholder="Arjun" required />
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="entry.lastName" placeholder="Mehta" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="entry.email" placeholder="arjun@example.com" required />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="entry.phone" placeholder="+91 98765 43210" />
-          </div>
-          <div class="form-group">
-            <label for="city">City</label>
-            <select id="city" name="entry.city">
-              <option value="">Select your city</option>
-              <option>Mumbai</option>
-              <option>Delhi NCR</option>
-              <option>Bangalore</option>
-              <option>Hyderabad</option>
-              <option>Pune</option>
-              <option>Chennai</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="interest">I'm Interested In</label>
-            <select id="interest" name="entry.interest">
-              <option value="">Select an option</option>
-              <option>Custom Printed Outfit</option>
-              <option>Bespoke Tailoring</option>
-              <option>Ethnic / Festive Wear</option>
-              <option>Corporate Uniforms</option>
-              <option>Wedding Outfits</option>
-              <option>Just Exploring</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Tell Us More (Optional)</label>
-            <textarea id="message" name="entry.message" placeholder="Describe what you have in mind — occasion, style, fabric preferences..."></textarea>
-          </div>
-          <button type="submit" class="form-submit">✦ Submit & We'll Be in Touch</button>
-          <p class="form-note">By submitting, you agree to be contacted by the ThreadCraft team. We never spam.</p>
-        </form>
-        <div class="success-msg" id="successMsg">🎉 Thank you! We've received your request and will reach out within 24 hours.</div>
+function renderDesigns(cat) {
+  const list = cat==='all' ? designs : designs.filter(d=>d.cat===cat);
+  document.getElementById('designGrid').innerHTML = list.map(d=>`
+    <div class="design-card" onclick="openModal(${d.id})" tabindex="0" role="button" aria-label="Preview ${d.name}">
+      <div class="d-check">✓</div>
+      <img class="design-card-img" src="${d.img}" alt="${d.name}" loading="lazy"/>
+      <div class="design-card-label">${d.name}<br><span style="color:var(--accent);font-family:'DM Mono',monospace;font-size:0.75rem;">₹${d.price}</span></div>
+    </div>`).join('');
+}
+renderDesigns('all');
 
-        <!-- Hidden Google Form backup link -->
-        <p style="margin-top:1.5rem;font-size:0.78rem;color:rgba(248,243,236,0.3);">
-          Prefer Google Forms? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdtTqHr3upjVRqg6NBD2In_EXgOUiEv8YRrEOWFB8GzomrQEg/viewform" target="_blank" style="color:var(--gold);text-decoration:underline;">Click here →</a>
-        </p>
-      </div>
-    </div>
-  </section>
+function filterCat(cat, btn) {
+  document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderDesigns(cat);
+}
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#home" class="logo-text" style="font-family:'Playfair Display',serif;color:var(--cream);text-decoration:none;">Thread<span style="color:var(--gold);">Craft</span></a>
-        <p>Bespoke garments crafted around you. From fabric selection to doorstep delivery — we make the extraordinary ordinary.</p>
-        <div class="social-links">
-          <a class="social-link" href="#" aria-label="Instagram">𝕀</a>
-          <a class="social-link" href="#" aria-label="Facebook">𝔽</a>
-          <a class="social-link" href="#" aria-label="Pinterest">𝕻</a>
-          <a class="social-link" href="#" aria-label="WhatsApp">𝕎</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h5>Quick Links</h5>
-        <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#fabrics">Fabrics</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#our-story">Our Story</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Our Services</h5>
-        <ul class="footer-links">
-          <li><a href="#contact">Custom Printing</a></li>
-          <li><a href="#contact">Bespoke Tailoring</a></li>
-          <li><a href="#contact">Wedding Wear</a></li>
-          <li><a href="#contact">Corporate Uniforms</a></li>
-          <li><a href="#contact">Ethnic Wear</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Help & Support</h5>
-        <ul class="footer-links">
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-          <li><a href="#">Shipping Policy</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2025 ThreadCraft. All rights reserved. Crafted with ❤️ in India.</span>
-      <span>Designed for those who appreciate the art of <a href="#how-it-works">perfect fit</a>.</span>
-    </div>
-  </footer>
+// ── MODAL ──
+function openModal(id) {
+  curDesign = designs.find(d=>d.id===id);
+  if(!curDesign) return;
+  basePrice = curDesign.price; qty = 1;
+  document.getElementById('mTitle').textContent = curDesign.name;
+  document.getElementById('mCatLabel').textContent = curDesign.cat.charAt(0).toUpperCase()+curDesign.cat.slice(1);
+  document.getElementById('qtyNum').textContent = 1;
+  document.getElementById('mPrice').textContent = basePrice;
+  document.getElementById('svgDesign').setAttribute('href', curDesign.img);
+  document.getElementById('tshirtModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('tshirtModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('tshirtModal').addEventListener('click', e=>{ if(e.target===e.currentTarget) closeModal(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 
-  <script>
-    // ─── NAV SCROLL ───
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
+// ── SHIRT COLOR ──
+function setColor(bodyHex, collarHex, blendMode, btn) {
+  document.getElementById('svgBody').setAttribute('fill', bodyHex);
+  document.getElementById('svgCollar').setAttribute('fill', collarHex);
+  document.getElementById('svgSleeveL').setAttribute('fill', bodyHex);
+  document.getElementById('svgSleeveR').setAttribute('fill', bodyHex);
+  document.getElementById('svgDesign').style.mixBlendMode = blendMode;
+  document.querySelectorAll('.cdot').forEach(d=>d.classList.remove('active'));
+  btn.classList.add('active');
+}
 
-    // ─── MOBILE NAV ───
-    function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); }
-    function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); }
+// ── SIZE ──
+function pickSize(btn) {
+  document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
 
-    // ─── HERO SLIDER ───
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let sliderTimer = setInterval(() => changeSlide(1), 5000);
+// ── QUANTITY ──
+function changeQty(d) {
+  qty = Math.max(1, qty+d);
+  document.getElementById('qtyNum').textContent = qty;
+  document.getElementById('mPrice').textContent = basePrice*qty;
+}
 
-    function goToSlide(n) {
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-      currentSlide = n;
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-      clearInterval(sliderTimer);
-      sliderTimer = setInterval(() => changeSlide(1), 5000);
-    }
+// ── ORDER NOW ──
+function goOrder() {
+  const size = document.querySelector('.size-btn.active')?.textContent || 'M';
+  const color = document.querySelector('.cdot.active')?.title || 'White';
+  closeModal();
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+  if(curDesign) {
+    setTimeout(()=>{
+      document.getElementById('f-msg').value = `Design: ${curDesign.name} | Category: ${curDesign.cat} | Color: ${color} | Size: ${size} | Qty: ${qty} | Price: ₹${basePrice*qty}`;
+    }, 700);
+  }
+}
 
-    function changeSlide(dir) {
-      const next = (currentSlide + dir + slides.length) % slides.length;
-      goToSlide(next);
-    }
+// ══════════════════════════
+// HERO SLIDER
+// ══════════════════════════
+let cur=0;
+const slides = document.querySelectorAll('.slide');
+const sdots = document.querySelectorAll('.sdot');
+let sInt = setInterval(()=>chgSlide(1), 5500);
 
-    // ─── TESTIMONIALS SLIDER ───
-    let testIndex = 0;
-    const track = document.getElementById('testimonialsTrack');
-    const cards = track.querySelectorAll('.testimonial-card');
-    const visibleCount = () => window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+function goSlide(n) {
+  slides[cur].classList.remove('active');
+  sdots[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active');
+  sdots[cur].classList.add('active');
+  clearInterval(sInt);
+  sInt = setInterval(()=>chgSlide(1), 5500);
+}
+function chgSlide(d) { goSlide((cur+d+slides.length)%slides.length); }
 
-    function scrollTestimonials(dir) {
-      const max = cards.length - visibleCount();
-      testIndex = Math.max(0, Math.min(max, testIndex + dir));
-      const cardW = cards[0].offsetWidth + 32;
-      track.style.transform = `translateX(-${testIndex * cardW}px)`;
-    }
+// ══════════════════════════
+// TESTIMONIALS
+// ══════════════════════════
+let tIdx=0;
+const ttrack = document.getElementById('testTrack');
+function moveTst(d) {
+  const cards = ttrack.querySelectorAll('.test-card');
+  const vis = window.innerWidth<768?1:window.innerWidth<1024?2:3;
+  tIdx = Math.max(0, Math.min(cards.length-vis, tIdx+d));
+  const w = cards[0].offsetWidth + 24;
+  ttrack.style.transform = `translateX(-${tIdx*w}px)`;
+}
 
-    // ─── FAQ ACCORDION ───
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-      });
-    });
+// ══════════════════════════
+// FAQ
+// ══════════════════════════
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const item = btn.parentElement;
+    const was = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+    if(!was) item.classList.add('open');
+  });
+});
 
-    // ─── SCROLL REVEAL ───
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
+// ══════════════════════════
+// MOBILE NAV
+// ══════════════════════════
+function openMob() { document.getElementById('mobMenu').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMob() { document.getElementById('mobMenu').classList.remove('open'); document.body.style.overflow=''; }
 
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger').forEach(el => observer.observe(el));
+// ══════════════════════════
+// SCROLLED NAV
+// ══════════════════════════
+const mainNav = document.getElementById('mainNav');
+window.addEventListener('scroll', ()=>{ mainNav.classList.toggle('scrolled', window.scrollY>80); }, {passive:true});
 
-    // ─── GOOGLE FORM SUBMISSION ───
-    function submitToGoogleForms(e) {
-      e.preventDefault();
-      const form = document.getElementById('consultationForm');
-      const data = new FormData(form);
+// ══════════════════════════
+// SCROLL REVEAL
+// ══════════════════════════
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }});
+}, {threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.stagger').forEach(el=>obs.observe(el));
 
-      // Build Google Forms URL with pre-filled data
-      // Map your form fields to the Google Form entry IDs
-      // The form URL provided uses these entry IDs (update if needed after inspecting your form)
-      const googleFormBase = 'https://docs.google.com/forms/d/e/1FAIpQLSdtTqHr3upjVRqg6NBD2In_EXgOUiEv8YRrEOWFB8GzomrQEg/formResponse';
-      
-      // Submit via hidden iframe to avoid redirect
-      const iframe = document.createElement('iframe');
-      iframe.name = 'hidden_iframe';
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
+// ══════════════════════════
+// SMOOTH SCROLL
+// ══════════════════════════
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
 
-      const hiddenForm = document.createElement('form');
-      hiddenForm.action = googleFormBase;
-      hiddenForm.method = 'POST';
-      hiddenForm.target = 'hidden_iframe';
-      hiddenForm.style.display = 'none';
+// ══════════════════════════
+// GOOGLE FORM SUBMISSION
+// ══════════════════════════
+// HOW THIS WORKS:
+// Google Forms accepts cross-origin POST requests when using fetch with mode:'no-cors'
+// The submission DOES go through — we just can't read the response (expected behavior)
+// The key fix from your failing curl: use fetch (not curl-style auth headers) and
+// use the correct entry IDs from YOUR form.
+//
+// TO FIND YOUR ENTRY IDs:
+// 1. Go to https://docs.google.com/forms/d/e/1FAIpQLSd.../viewform
+// 2. Open DevTools → Network → Clear
+// 3. Fill & submit the form once
+// 4. Find the POST to "formResponse" → click it → Payload tab
+// 5. You'll see entry.XXXXXXXX = value pairs
+// 6. Replace FORM_FIELDS below with your real entry IDs
+//
+// WHY YOUR CURL FAILED:
+// 1. entry.2005620554 was a guess — not a real field in your form
+// 2. The auth cookies in curl are user-session cookies, not needed for public forms
+// 3. The origin header mismatch (netlify vs docs.google.com) can also cause rejections
 
-      // We'll submit a consolidated message field since we don't know exact entry IDs
-      // Users should inspect their Google Form to get exact entry IDs
-      const messageField = document.createElement('input');
-      messageField.type = 'hidden';
-      // entry.XXXXXXXXX should be replaced with actual entry ID from your Google Form
-      messageField.name = 'entry.2005620554'; // common first name field - update as needed
-      messageField.value = [
-        'Name: ' + (document.getElementById('fname').value + ' ' + document.getElementById('lname').value),
-        'Email: ' + document.getElementById('email').value,
-        'Phone: ' + document.getElementById('phone').value,
-        'City: ' + document.getElementById('city').value,
-        'Interest: ' + document.getElementById('interest').value,
-        'Message: ' + document.getElementById('message').value
-      ].join('\n');
-      hiddenForm.appendChild(messageField);
-      document.body.appendChild(hiddenForm);
-      hiddenForm.submit();
+document.getElementById('mainForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const first = document.getElementById('f-first').value.trim();
+  const last  = document.getElementById('f-last').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const city  = document.getElementById('f-city').value;
+  const cat   = document.getElementById('f-interest').value;
+  const msg   = document.getElementById('f-msg').value.trim();
 
-      // Show success
-      form.style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
-      setTimeout(() => { document.body.removeChild(iframe); }, 3000);
-    }
+  if(!first || !email || !phone) { alert('Please fill in Name, Email and Phone.'); return; }
 
-    // ─── SMOOTH ANCHOR SCROLL ───
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
+  // ─── REPLACE THE ENTRY ID BELOW WITH YOUR REAL ONE ───
+  // Find it using the steps above. This is the single most important fix.
+  const ENTRY_ID = 'entry.2005620554'; // ← UPDATE THIS
+  const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdtTqHr3upjVRqg6NBD2In_EXgOUiEv8YRrEOWFB8GzomrQEg/formResponse';
 
-    // ─── PARALLAX ON HERO ───
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      const heroImg = document.querySelector('.slide.active img');
-      if (heroImg && scrolled < window.innerHeight) {
-        heroImg.style.transform = `scale(1) translateY(${scrolled * 0.2}px)`;
-      }
-    });
-  </script>
+  const payload = [
+    'Name: ' + first + ' ' + last,
+    'Email: ' + email,
+    'Phone: ' + phone,
+    'City: ' + (city||'Not specified'),
+    'Interest: ' + (cat||'Not specified'),
+    'Message: ' + (msg||'—'),
+  ].join('\n');
+
+  const body = new URLSearchParams();
+  body.append(ENTRY_ID, payload);
+
+  // Use fetch with no-cors — this is the correct approach for cross-origin Google Forms
+  fetch(FORM_ACTION, {
+    method: 'POST',
+    mode: 'no-cors', // ← CRITICAL: always use no-cors for Google Forms
+    headers: {'Content-Type':'application/x-www-form-urlencoded'},
+    body: body.toString()
+  }).finally(()=>{
+    // With no-cors, fetch always resolves (no response body accessible)
+    // If entry ID is correct, the form IS submitted in Google Sheets
+    document.getElementById('mainForm').style.display = 'none';
+    document.getElementById('fsuccess').style.display = 'block';
+  });
+});
+</script>
 </body>
 </html>
